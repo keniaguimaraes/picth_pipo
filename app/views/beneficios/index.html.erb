@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Beneficios</h1>
+
+<div id="beneficios">
+  <% @beneficios.each do |beneficio| %>
+    <%= render beneficio %>
+    <p>
+      <%= link_to "Show this beneficio", beneficio %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New beneficio", new_beneficio_path %>
