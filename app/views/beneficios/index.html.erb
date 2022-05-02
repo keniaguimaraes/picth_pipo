@@ -1,14 +1,30 @@
-<p style="color: green"><%= notice %></p>
-
-<h1>Beneficios</h1>
-
-<div id="beneficios">
-  <% @beneficios.each do |beneficio| %>
-    <%= render beneficio %>
-    <p>
-      <%= link_to "Show this beneficio", beneficio %>
-    </p>
-  <% end %>
+<p id="notice"><%= notice %></p>
+<div>  
+  <%= link_to "Adicionar", new_beneficio_path, "data-controller": "turbo",class: 'btn btn-primary my-2 my-sm-0' %>
 </div>
-
-<%= link_to "New beneficio", new_beneficio_path %>
+<br />
+<div class="card shadow mb-4">
+<div class="card-body">
+    <div class="table-responsive">
+    <table class="table table-bordered" id="tablabeneficio" width="100%" cellspacing="0">
+        <thead>
+        <tr>
+            <th>Nome</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+            <% @beneficios.each do |beneficio| %>
+              <tr id="beneficio_<%= beneficio.id %>" >
+                <td><%= beneficio.nome %></td>
+                <td>
+                <%= link_to "Editar", edit_beneficio_path(beneficio), "data-controller": "turbo",class: 'btn btn-warning btn-sm' %> %>
+                <%= link_to "Deletar",  beneficio_path(beneficio), "data-turbo-method": :delete,"data-turbo-confirm": "Tem certeza?",class: 'btn btn-danger btn-sm' %>
+                </td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+    </div>
+  </div>
+</div>

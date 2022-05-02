@@ -1,14 +1,31 @@
-<p style="color: green"><%= notice %></p>
-
-<h1>Clientes</h1>
-
-<div id="clientes">
-  <% @clientes.each do |cliente| %>
-    <%= render cliente %>
-    <p>
-      <%= link_to "Show this cliente", cliente %>
-    </p>
-  <% end %>
+<p id="notice"><%= notice %></p>
+<div>  
+   <%= link_to "Adicionar", new_cliente_path, "data-controller": "turbo",class: 'btn btn-primary' %>
 </div>
 
-<%= link_to "New cliente", new_cliente_path %>
+<br />
+<div class="card shadow mb-4">
+<div class="card-body">
+    <div class="table-responsive">
+    <table class="table table-bordered" id="tablacliente" width="100%" cellspacing="0">
+        <thead>
+        <tr>
+            <th>Nome</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+            <% @clientes.each do |cliente| %>
+              <tr id="cliente_<%= cliente.id %>">
+                <td><%= cliente.nome %></td>
+                <td>
+                  <%= link_to "Editar", edit_cliente_path(cliente), "data-controller": "turbo", class: 'btn btn-warning btn-sm' %>
+                  <%= link_to "Deletar",  cliente_path(cliente), "data-turbo-method": :delete,"data-turbo-confirm": "Tem certeza?",class: 'btn btn-danger btn-sm' %>
+                </td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+    </div>
+  </div>
+</div>

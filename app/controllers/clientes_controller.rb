@@ -3,6 +3,8 @@ class ClientesController < ApplicationController
 
   # GET /clientes or /clientes.json
   def index
+    add_breadcrumb "Pagina Principal", root_path, :title => "Voltar para a Página principal"
+    add_breadcrumb "Clientes"
     @clientes = Cliente.all
   end
 
@@ -19,42 +21,30 @@ class ClientesController < ApplicationController
   def edit
   end
 
+
   # POST /clientes or /clientes.json
   def create
     @cliente = Cliente.new(cliente_params)
-
-    respond_to do |format|
-      if @cliente.save
-        format.html { redirect_to cliente_url(@cliente), notice: "Cliente was successfully created." }
-        format.json { render :show, status: :created, location: @cliente }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @cliente.errors, status: :unprocessable_entity }
-      end
+    if @cliente.save
+      redirect_to @cliente, notice: "Novo Cliente Adicionado!"
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 
   # PATCH/PUT /clientes/1 or /clientes/1.json
   def update
-    respond_to do |format|
-      if @cliente.update(cliente_params)
-        format.html { redirect_to cliente_url(@cliente), notice: "Cliente was successfully updated." }
-        format.json { render :show, status: :ok, location: @cliente }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @cliente.errors, status: :unprocessable_entity }
-      end
+    if @cliente.update(cliente_params)
+      redirect_to @cliente, notice: "Cliente editado!"
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 
   # DELETE /clientes/1 or /clientes/1.json
   def destroy
     @cliente.destroy
-
-    respond_to do |format|
-      format.html { redirect_to clientes_url, notice: "Cliente was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    redirect_to clientes_url, notice: "Cliente Exclúido!"
   end
 
   private

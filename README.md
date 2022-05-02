@@ -2,7 +2,7 @@
 
 ### Objetivo
   Resolução do pitch do processo seletivo da Pipo Saúde
-  
+
 ### Autor
  - Kênia Guimarães
 
@@ -10,5 +10,6 @@
     $ Ruby 3.0.0
     $ Rails 7.0.0
     $ PostgreSQL
+    $ Bootstrap 
 
 

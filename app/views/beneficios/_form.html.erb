@@ -1,7 +1,8 @@
+
 <%= form_with(model: beneficio) do |form| %>
   <% if beneficio.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(beneficio.errors.count, "error") %> prohibited this beneficio from being saved:</h2>
+      <h2><%= pluralize(beneficio.errors.count, "error") %> prohibited this project from being saved:</h2>
 
       <ul>
         <% beneficio.errors.each do |error| %>
@@ -11,12 +12,19 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :nome, style: "display: block" %>
-    <%= form.text_field :nome %>
-  </div>
 
-  <div>
-    <%= form.submit %>
-  </div>
+    <div class="item form-group<%= @beneficio.errors[:nome].any? ? ' has-error has-feedback' : '' %>">
+    <%= form.label :nome, "Nome: " %>
+      <div class="input-group">
+        <%= form.text_field :nome, {:class=> "form-control", :placeholder=>"Nome do Beneficio"} %>        
+        <%if @beneficio.errors[:nome].any? %>
+          <p class="bg-danger"><%= @beneficio.errors[:nome].to_s[/\w([^"]*)/] %></p>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="actions col-md-9 col-sm-9 col-xs-12 col-md-offset-1">
+      <%= form.submit @beneficio.new_record? ? "Adicionar" : "Atualizar", :class => "btn btn-primary"%>
+    </div>  
+
 <% end %>
