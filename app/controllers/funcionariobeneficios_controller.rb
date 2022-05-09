@@ -40,7 +40,10 @@ class FuncionariobeneficiosController < ApplicationController
 
   # PATCH/PUT /funcionariobeneficios/1 or /funcionariobeneficios/1.json
   def update
+    @@funcionarioid= params[:funcionario_id]
+    @funcionariobeneficio.funcionario_id = @@funcionarioid
       if @funcionariobeneficio.update(funcionariobeneficio_params)
+       
         redirect_to funcionariobeneficios_path(funcionario_id:@funcionariobeneficio.funcionario_id), notice: "Benefício editado!"
       else
        render :edit, status: :unprocessable_entity

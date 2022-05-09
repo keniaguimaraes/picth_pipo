@@ -49,7 +49,7 @@ gem "breadcrumbs_on_rails"
 # Use SCSS for stylesheets
 gem 'bootstrap'
 gem 'jquery-rails' 
-gem 'font_awesome5_rails'
+#gem 'font_awesome5_rails'
 gem "mime-types"
 #gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'main'
 gem  "will_paginate-bootstrap"
