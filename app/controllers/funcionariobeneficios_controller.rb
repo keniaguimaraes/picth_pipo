@@ -1,6 +1,6 @@
 class FuncionariobeneficiosController < ApplicationController
   before_action :set_funcionariobeneficio, only: %i[show edit update destroy ]
-  before_action :set_beneficio, only: [:new, :edit, :create,:index]
+  before_action :set_beneficio, only: [:new, :edit, :create,:index,:update]
  
 
   # GET /funcionariobeneficios or /funcionariobeneficios.json
@@ -33,11 +33,9 @@ class FuncionariobeneficiosController < ApplicationController
     @funcionariobeneficio.funcionario_id = @@funcionarioid
     if @funcionariobeneficio.save
       redirect_to funcionariobeneficios_path(funcionario_id:@@funcionarioid), notice: "Benefício adicionado!"
-      #redirect_to "/funcionariobeneficios?funcionario_id:"params[:funcionario_id]", notice: "Benefício adicionado!"
     else
       render :new, status: :unprocessable_entity
-    end
-    
+    end  
   end
 
   # PATCH/PUT /funcionariobeneficios/1 or /funcionariobeneficios/1.json
@@ -68,8 +66,6 @@ class FuncionariobeneficiosController < ApplicationController
     end
 
     def set_beneficio
-      #@cliente_id = Funcionario.where("funcionario_id =:funcionario_id",{funcionario_id:params[:funcionario_id]}).all
-      @beneficios = Beneficio.all#  where("cliente_id =:cliente_id",{cliente_id: @cliente_id.cliente_id}).all
-     
+      @beneficios = Beneficio.all
     end  
 end

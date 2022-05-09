@@ -22,7 +22,6 @@
       </div>
     </div>
 
- 
     <div class="item form-group<%= @funcionariobeneficio.errors[:peso].any? ? ' has-error has-feedback' : '' %>">
     <%= form.label :peso, "Peso " %>
       <div class="input-group">
@@ -43,7 +42,6 @@
       </div>
     </div>
   
-   <%if  @funcionariobeneficio.beneficio_id = 4%>
     <div class="item form-group<%= @funcionariobeneficio.errors[:horas_meditadas].any? ? ' has-error has-feedback' : '' %>">
     <%= form.label :horas_meditadas, "Horas Meditadas " %>
       <div class="input-group">
@@ -53,7 +51,7 @@
         <% end %>
       </div>
     </div>
-<%end%>
+
     <div class="actions col-md-9 col-sm-9 col-xs-12 col-md-offset-1">
       <%= form.submit @funcionariobeneficio.new_record? ? "Adicionar" : "Atualizar", :class => "btn btn-primary"%>
     </div>  

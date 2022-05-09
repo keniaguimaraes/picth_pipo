@@ -1,12 +1,12 @@
 class FuncionariosController < ApplicationController
   before_action :set_funcionario, only: %i[ show edit update destroy ]
-  before_action :set_cliente, only: [:new, :edit, :create]
+  before_action :set_cliente, only: [:new, :edit, :create,:update]
 
   # GET /funcionarios or /funcionarios.json
   def index
     add_breadcrumb "Pagina Principal", root_path, :title => "Voltar para a Página principal"
     add_breadcrumb "Funcionários"
-    @funcionarios = Funcionario.all
+    @funcionarios = Funcionario.all.paginate(:page => params[:page], :per_page => 5)
   end
 
   # GET /funcionarios/1 or /funcionarios/1.json
@@ -52,6 +52,7 @@ class FuncionariosController < ApplicationController
 
   # DELETE /funcionarios/1 or /funcionarios/1.json
   def destroy
+    @funcionario= Funcionario.find(params[:id])
     @funcionario.destroy
 
     respond_to do |format|
