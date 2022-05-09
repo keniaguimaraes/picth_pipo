@@ -1,5 +1,5 @@
 class FuncionariobeneficiosController < ApplicationController
-  before_action :set_funcionariobeneficio, only: %i[show edit update destroy ]
+  before_action :set_funcionariobeneficio, only: %i[show edit update ]
   before_action :set_beneficio, only: [:new, :edit, :create,:index,:update]
  
 
@@ -8,7 +8,7 @@ class FuncionariobeneficiosController < ApplicationController
     add_breadcrumb "Pagina Principal ", root_path, :title => "Voltar para a Página principal"
     add_breadcrumb "Funcionários ", funcionarios_path, :title => "Voltar para Funcionários"
     add_breadcrumb "Benefícios para Funcionários"
-    @funcionarios = Funcionariobeneficio.find(params[:funcionario_id])
+    @funcionarios = Funcionario.find_by(id:params[:funcionario_id])
     @funcionariobeneficios = Funcionariobeneficio.where("funcionario_id =:funcionario_id",{funcionario_id:params[:funcionario_id]}).all
   end
 
@@ -25,6 +25,8 @@ class FuncionariobeneficiosController < ApplicationController
 
   # GET /funcionariobeneficios/1/edit
   def edit
+    @funcionariobeneficio = Funcionariobeneficio.find(params[:id])
+    @@funcionarioid= @funcionariobeneficio.funcionario_id
   end
 
   # POST /funcionariobeneficios or /funcionariobeneficios.json
@@ -40,10 +42,7 @@ class FuncionariobeneficiosController < ApplicationController
 
   # PATCH/PUT /funcionariobeneficios/1 or /funcionariobeneficios/1.json
   def update
-    @@funcionarioid= params[:funcionario_id]
-    @funcionariobeneficio.funcionario_id = @@funcionarioid
       if @funcionariobeneficio.update(funcionariobeneficio_params)
-       
         redirect_to funcionariobeneficios_path(funcionario_id:@funcionariobeneficio.funcionario_id), notice: "Benefício editado!"
       else
        render :edit, status: :unprocessable_entity
@@ -54,8 +53,20 @@ class FuncionariobeneficiosController < ApplicationController
   def destroy
     @funcionariobeneficio = Funcionariobeneficio.find(params[:id])
     @funcionariobeneficio.destroy
-    redirect_to funcionariobeneficios_path(funcionario_id:@funcionariobeneficio.funcionario_id), notice: "Benefício excluído!"
+    redirect_to '/funcionarios/'
   end
+
+  def ficha
+      @funcionariobeneficio  = Funcionariobeneficio.find(params[:id])
+      respond_to do |format|
+        format.html
+        format.pdf { render pdf: "",
+          footer: { center: "[page] of [topage]" }
+        }
+        
+      end 
+  end
+    
 
   private
     # Use callbacks to share common setup or constraints between actions.

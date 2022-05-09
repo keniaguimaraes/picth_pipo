@@ -8,8 +8,8 @@
                 #@funcionario= Funcionario.find(@funcionario_id)
              %>
                
-               <td> <strong><b>Funcionário:<%= @funcionarios.funcionario.nome%></b></strong></td>  
-               <td> <strong><b>Empresa:<%= @funcionarios.funcionario.cliente.nome %></b></strong></td>  
+               <td> <strong><b>Funcionário:<%= @funcionarios.nome%></b></strong></td>  
+               <td> <strong><b>Empresa:<%= @funcionarios.cliente.nome %></b></strong></td>  
             </tr>
         </tbody>
      </table>
@@ -35,9 +35,11 @@
               <tr id="funcionariobeneficio_<%= funcionariobeneficio.id %>">
                 <td><%= funcionariobeneficio.beneficio.nome %></td>
                 <td>
-                  <%= link_to "Ficha",  funcionariobeneficio_path(funcionariobeneficio), class: 'btn btn-success btn-sm' %>
+                  <%= link_to "Ficha",  ficha_path(id:funcionariobeneficio.id,format: 'pdf'), target: '_blank', class: 'btn btn-success btn-sm' %>
                   <%= link_to "Editar", edit_funcionariobeneficio_path(funcionariobeneficio), "data-controller": "turbo", class: 'btn btn-warning btn-sm' %>
-                  <%= link_to "Deletar",  funcionariobeneficio_path(funcionariobeneficio), "data-turbo-method": :delete,"data-turbo-confirm": "Tem certeza?",class: 'btn btn-danger btn-sm' %>
+                  <%= link_to "Deletar", funcionariobeneficio, class: 'btn btn-danger btn-sm',
+                                  "data-turbo-method": :delete,
+                                  "data-turbo-confirm": "Are you sure?" %>
                 </td>
             </tr>
             <% end %>

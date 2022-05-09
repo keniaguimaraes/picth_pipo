@@ -9,8 +9,6 @@
       </ul>
     </div>
   <% end %>
-
- <%= form.hidden_field:funcionario_id,:value =>params[:funcionario_id] %> 
        
    <div class="item form-group<%=  @funcionariobeneficio.errors[:beneficio_id].any? ? ' has-error has-feedback' : '' %>">
       <%= form.label :beneficio_id, "Benefício " %>

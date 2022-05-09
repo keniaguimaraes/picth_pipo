@@ -54,7 +54,6 @@ class FuncionariosController < ApplicationController
   def destroy
     @funcionario= Funcionario.find(params[:id])
     @funcionario.destroy
-
     respond_to do |format|
       format.html { redirect_to "/funcionarios/", notice: "Funcionário excluído!" }
       format.json { head :no_content }

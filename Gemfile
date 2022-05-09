@@ -53,6 +53,8 @@ gem 'jquery-rails'
 gem "mime-types"
 #gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'main'
 gem  "will_paginate-bootstrap"
+gem  'wicked_pdf'
+gem  'wkhtmltopdf-binary'
 
 group :development, :test do
   # Use console on exceptions pages [https://github.com/rails/web-console]
