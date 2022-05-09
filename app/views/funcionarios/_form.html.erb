@@ -1,0 +1,81 @@
+<%= form_with(model: funcionario) do |form| %>
+  <% if funcionario.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(funcionario.errors.count, "error") %> prohibited this funcionario from being saved:</h2>
+
+      <ul>
+        <% funcionario.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <div class="item form-group<%= @funcionario.errors[:nome].any? ? ' has-error has-feedback' : '' %>">
+    <%= form.label :nome, "Nome " %>
+      <div class="input-group">
+        <%= form.text_field :nome, {:class=> "form-control", :placeholder=>"Nome do Funcionário"} %>        
+        <%if @funcionario.errors[:nome].any? %>
+          <p class="bg-danger"><%= @funcionario.errors[:nome].to_s[/\w([^"]*)/] %></p>
+        <% end %>
+      </div>
+    </div>
+
+  <div class="item form-group<%= @funcionario.errors[:cpf].any? ? ' has-error has-feedback' : '' %>">
+    <%= form.label :cpf, "Cpf " %>
+      <div class="input-group">
+        <%= form.text_field :cpf, {:class=> "form-control", :placeholder=>"CPF do Funcionário"} %>        
+        <%if @funcionario.errors[:cpf].any? %>
+          <p class="bg-danger"><%= @funcionario.errors[:cpf].to_s[/\w([^"]*)/] %></p>
+        <% end %>
+      </div>
+  </div>
+
+  <div class="item form-group<%= @funcionario.errors[:endereco].any? ? ' has-error has-feedback' : '' %>">
+    <%= form.label :endereco, "Endereço " %>
+      <div class="input-group">
+        <%= form.text_field :endereco, {:class=> "form-control", :placeholder=>"Endereço do Funcionário"} %>        
+        <%if @funcionario.errors[:endereco].any? %>
+          <p class="bg-danger"><%= @funcionario.errors[:endereco].to_s[/\w([^"]*)/] %></p>
+        <% end %>
+      </div>
+  </div>
+
+  <div class="item form-group<%= @funcionario.errors[:data_admissao].any? ? ' has-error has-feedback' : '' %>">
+    <%= form.label :data_admissao, "Data de Admissão " %>
+      <div class="input-group">
+        <%= form.date_field :data_admissao, {:class=> "form-control", :placeholder=>"Data de Admissao"} %>        
+        <%if @funcionario.errors[:data_admissao].any? %>
+          <p class="bg-danger"><%= @funcionario.errors[:data_admissao].to_s[/\w([^"]*)/] %></p>
+        <% end %>
+      </div>
+  </div>
+
+  <div class="item form-group<%= @funcionario.errors[:email].any? ? ' has-error has-feedback' : '' %>">
+    <%= form.label :email, "Email " %>
+      <div class="input-group">
+        <%= form.email_field :email, {:class=> "form-control", :placeholder=>"Ex: usuario@dominio.com"} %>        
+        <%if @funcionario.errors[:email].any? %>
+          <p class="bg-danger"><%= @funcionario.errors[:email].to_s[/\w([^"]*)/] %></p>
+        <% end %>
+      </div>
+    </div>
+
+  <div class="item form-group<%=  @funcionario.errors[:cliente].any? ? ' has-error has-feedback' : '' %>">
+      <%= form.label :cliente_id, "Empresa " %>
+      <div class="input-group">
+        <%= collection_select(:funcionario, :cliente_id, @clientes, :id, :nome, {:prompt => 'Selecione uma Empresa'}, { class: "form-control" })%>
+        <%if @funcionario.errors[:cliente].any? %>
+          <p class="bg-danger"><%= @funcionario.errors[:cliente].to_s[/\w([^"]*)/] %></p>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="actions col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
+      <%= form.submit @funcionario.new_record? ? "Adicionar" : "Atualizar", :class => "btn btn-primary"%>
+    </div>  
+
+    <% end %>
+
+
+

@@ -26,7 +26,7 @@ class ClientesController < ApplicationController
   def create
     @cliente = Cliente.new(cliente_params)
     if @cliente.save
-      redirect_to @cliente, notice: "Novo Cliente Adicionado!"
+      redirect_to "/clientes/", notice: "Novo Cliente Adicionado!"
     else
       render :new, status: :unprocessable_entity
     end
@@ -35,7 +35,7 @@ class ClientesController < ApplicationController
   # PATCH/PUT /clientes/1 or /clientes/1.json
   def update
     if @cliente.update(cliente_params)
-      redirect_to @cliente, notice: "Cliente editado!"
+      redirect_to "/clientes/", notice: "Cliente editado!"
     else
       render :edit, status: :unprocessable_entity
     end
@@ -44,7 +44,7 @@ class ClientesController < ApplicationController
   # DELETE /clientes/1 or /clientes/1.json
   def destroy
     @cliente.destroy
-    redirect_to clientes_url, notice: "Cliente Exclúido!"
+    redirect_to "/clientes/", notice: "Cliente Exclúido!"
   end
 
   private

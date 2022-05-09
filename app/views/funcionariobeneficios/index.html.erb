@@ -1,0 +1,48 @@
+<p id="notice"><%= notice %></p>
+
+<div class="table-responsive">
+     <table class="table table-bordered table-info" id="tablaacompanhamento" width="100%" cellspacing="0">
+        <tbody>
+            </tr>
+             <% @funcionario_id=params[:funcionario_id]  
+                #@funcionario= Funcionario.find(@funcionario_id)
+             %>
+               
+               <td> <strong><b>Funcionário:<%= @funcionarios.funcionario.nome%></b></strong></td>  
+               <td> <strong><b>Empresa:<%= @funcionarios.funcionario.cliente.nome %></b></strong></td>  
+            </tr>
+        </tbody>
+     </table>
+</div>
+
+<div>  
+   <%= link_to "Adicionar", new_funcionariobeneficio_path(funcionario_id:@funcionario_id), "data-controller": "turbo",class: 'btn btn-primary' %>
+</div>
+
+<br />
+<div class="card shadow mb-4">
+<div class="card-body">
+    <div class="table-responsive">
+    <table class="table table-bordered" id="tablacliente" width="100%" cellspacing="0">
+        <thead>
+        <tr>
+            <th>Benefícios</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+            <% @funcionariobeneficios.each do |funcionariobeneficio| %>
+              <tr id="funcionariobeneficio_<%= funcionariobeneficio.id %>">
+                <td><%= funcionariobeneficio.beneficio.nome %></td>
+                <td>
+                  <%= link_to "Ficha",  funcionariobeneficio_path(funcionariobeneficio), class: 'btn btn-success btn-sm' %>
+                  <%= link_to "Editar", edit_funcionariobeneficio_path(funcionariobeneficio), "data-controller": "turbo", class: 'btn btn-warning btn-sm' %>
+                  <%= link_to "Deletar",  funcionariobeneficio_path(funcionariobeneficio), "data-turbo-method": :delete,"data-turbo-confirm": "Tem certeza?",class: 'btn btn-danger btn-sm' %>
+                </td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+    </div>
+  </div>
+</div>

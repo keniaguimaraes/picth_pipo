@@ -26,7 +26,7 @@ class BeneficiosController < ApplicationController
   def create
     @beneficio = Beneficio.new(beneficio_params)
     if @beneficio.save
-      redirect_to @beneficio, notice: "Novo beneficio adicionado!"
+      redirect_to "/beneficios/", notice: "Novo beneficio adicionado!"
     else
       render :new, status: :unprocessable_entity
     end
@@ -36,7 +36,7 @@ class BeneficiosController < ApplicationController
   # PATCH/PUT /beneficios/1 or /beneficios/1.json
   def update
     if @beneficio.update(beneficio_params)
-      redirect_to @beneficio, notice: "Beneficio editado!"
+      redirect_to "/beneficios/", notice: "Beneficio editado!"
     else
       render :edit, status: :unprocessable_entity
     end
@@ -45,7 +45,7 @@ class BeneficiosController < ApplicationController
   # DELETE /beneficios/1 or /beneficios/1.json
   def destroy
     @beneficio.destroy
-    redirect_to beneficio_url, notice: "Beneficio Exclúido!"
+    redirect_to "/beneficios/", notice: "Beneficio Exclúido!"
   end
 
   private

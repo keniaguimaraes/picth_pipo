@@ -1,0 +1,2 @@
+module FuncionariobeneficiosHelper
+end

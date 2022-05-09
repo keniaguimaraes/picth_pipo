@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :funcionariobeneficios
+  resources :funcionarios
   resources :beneficios
   resources :clientes
   resources :projects

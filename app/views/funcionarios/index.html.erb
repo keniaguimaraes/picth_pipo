@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+<div>  
+   <%= link_to "Adicionar", new_funcionario_path, "data-controller": "turbo",class: 'btn btn-primary' %>
+</div>
+
+<br />
+<div class="card shadow mb-4">
+<div class="card-body">
+    <div class="table-responsive">
+    <table class="table table-bordered" id="tablacliente" width="100%" cellspacing="0">
+        <thead>
+        <tr>
+            <th>Nome</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+            <% @funcionarios.each do |funcionario| %>
+              <tr id="funcionario_<%= funcionario.id %>">
+                <td><%= funcionario.nome %></td>
+                <td>
+                  <%= link_to "Benefícios", funcionariobeneficios_path(funcionario_id:funcionario.id), class: 'btn btn-info btn-sm' %>
+                  <%= link_to "Editar", edit_funcionario_path(funcionario), "data-controller": "turbo", class: 'btn btn-warning btn-sm' %>
+                  <%= link_to "Deletar",  funcionario_path(funcionario), "data-turbo-method": :delete,"data-turbo-confirm": "Tem certeza?",class: 'btn btn-danger btn-sm' %>
+                </td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+    </div>
+  </div>
+</div>

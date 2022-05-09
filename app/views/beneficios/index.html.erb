@@ -18,7 +18,7 @@
               <tr id="beneficio_<%= beneficio.id %>" >
                 <td><%= beneficio.nome %></td>
                 <td>
-                <%= link_to "Editar", edit_beneficio_path(beneficio), "data-controller": "turbo",class: 'btn btn-warning btn-sm' %> %>
+                <%= link_to "Editar", edit_beneficio_path(beneficio), "data-controller": "turbo",class: 'btn btn-warning btn-sm' %> 
                 <%= link_to "Deletar",  beneficio_path(beneficio), "data-turbo-method": :delete,"data-turbo-confirm": "Tem certeza?",class: 'btn btn-danger btn-sm' %>
                 </td>
             </tr>

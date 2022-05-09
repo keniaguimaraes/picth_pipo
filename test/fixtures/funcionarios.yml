@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nome: MyString
+  cpf: MyString
+  endereco: MyString
+  data_admissao: 2022-05-01
+  email: MyString
+
+two:
+  nome: MyString
+  cpf: MyString
+  endereco: MyString
+  data_admissao: 2022-05-01
+  email: MyString
