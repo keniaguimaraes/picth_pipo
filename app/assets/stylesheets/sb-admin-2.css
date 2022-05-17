@@ -60,12 +60,12 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
 
 
 .field_with_errors .form-control{
-  border-color: $danger;
+  border-color: #e74a3b;
 }
 
 .invalid-feedback {
   display: block;
-  color: $danger;
+  color: #e74a3b;
 }
 
 body {
