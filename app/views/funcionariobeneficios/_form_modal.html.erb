@@ -1,5 +1,8 @@
 <%= turbo_frame_tag :remote_modal, target: :_top do %>
   <div class="modal fade" data-controller="modal">
+   <div id="flash" class="flash">
+      <%= render "layouts/flash" %>
+   </div>
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">

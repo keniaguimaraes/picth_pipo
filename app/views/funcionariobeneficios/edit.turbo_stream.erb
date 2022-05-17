@@ -2,3 +2,4 @@
   <%= render partial: "funcionariobeneficios/form_modal", locals: { funcionariobeneficio: @funcionariobeneficio } %>
 <% end %>
 
+<%= turbo_stream.prepend "flash", partial: "layouts/flash" %>

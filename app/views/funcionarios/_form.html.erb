@@ -1,22 +1,12 @@
-<%= form_with(model: funcionario) do |form| %>
-  <% if funcionario.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(funcionario.errors.count, "error") %> prohibited this funcionario from being saved:</h2>
-
-      <ul>
-        <% funcionario.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
+<%= form_with(model: funcionario,html: { data: { controller: "masks" } }) do |form| %>
+  
+<div> 
     <div class="item form-group<%= @funcionario.errors[:nome].any? ? ' has-error has-feedback' : '' %>">
-    <%= form.label :nome, "Nome " %>
+      <%= form.label :nome, "Nome " %>
       <div class="input-group">
         <%= form.text_field :nome, {:class=> "form-control", :placeholder=>"Nome do Funcionário"} %>        
         <%if @funcionario.errors[:nome].any? %>
-          <p class="bg-danger"><%= @funcionario.errors[:nome].to_s[/\w([^"]*)/] %></p>
+          <p class="bg-danger text-white"><%= @funcionario.errors[:nome].to_s[/\w([^"]*)/] %></p>
         <% end %>
       </div>
     </div>
@@ -26,9 +16,10 @@
       <div class="input-group">
         <%= form.text_field :cpf, {:class=> "form-control", :placeholder=>"CPF do Funcionário"} %>        
         <%if @funcionario.errors[:cpf].any? %>
-          <p class="bg-danger"><%= @funcionario.errors[:cpf].to_s[/\w([^"]*)/] %></p>
+          <p class="bg-danger text-white"><%= @funcionario.errors[:cpf].to_s[/\w([^"]*)/] %></p>
         <% end %>
       </div>
+
   </div>
 
   <div class="item form-group<%= @funcionario.errors[:endereco].any? ? ' has-error has-feedback' : '' %>">
@@ -36,7 +27,7 @@
       <div class="input-group">
         <%= form.text_field :endereco, {:class=> "form-control", :placeholder=>"Endereço do Funcionário"} %>        
         <%if @funcionario.errors[:endereco].any? %>
-          <p class="bg-danger"><%= @funcionario.errors[:endereco].to_s[/\w([^"]*)/] %></p>
+          <p class="bg-danger text-white"><%= @funcionario.errors[:endereco].to_s[/\w([^"]*)/] %></p>
         <% end %>
       </div>
   </div>
@@ -46,7 +37,7 @@
       <div class="input-group">
         <%= form.date_field :data_admissao, {:class=> "form-control", :placeholder=>"Data de Admissao"} %>        
         <%if @funcionario.errors[:data_admissao].any? %>
-          <p class="bg-danger"><%= @funcionario.errors[:data_admissao].to_s[/\w([^"]*)/] %></p>
+          <p class="bg-danger text-white"><%= @funcionario.errors[:data_admissao].to_s[/\w([^"]*)/] %></p>
         <% end %>
       </div>
   </div>
@@ -56,7 +47,7 @@
       <div class="input-group">
         <%= form.email_field :email, {:class=> "form-control", :placeholder=>"Ex: usuario@dominio.com"} %>        
         <%if @funcionario.errors[:email].any? %>
-          <p class="bg-danger"><%= @funcionario.errors[:email].to_s[/\w([^"]*)/] %></p>
+          <p class="bg-danger text-white"><%= @funcionario.errors[:email].to_s[/\w([^"]*)/] %></p>
         <% end %>
       </div>
     </div>
@@ -66,7 +57,7 @@
       <div class="input-group">
         <%= collection_select(:funcionario, :cliente_id, @clientes, :id, :nome, {:prompt => 'Selecione uma Empresa'}, { class: "form-control" })%>
         <%if @funcionario.errors[:cliente].any? %>
-          <p class="bg-danger"><%= @funcionario.errors[:cliente].to_s[/\w([^"]*)/] %></p>
+          <p class="bg-danger text-white"><%= @funcionario.errors[:cliente].to_s[/\w([^"]*)/] %></p>
         <% end %>
       </div>
     </div>

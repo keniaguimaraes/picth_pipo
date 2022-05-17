@@ -1,6 +1,6 @@
-<p id="notice"><%= notice %></p>
+
 <div>  
-   <%= link_to "Adicionar", new_funcionario_path, "data-controller": "turbo",class: 'btn btn-primary' %>
+   <%= link_to "Adicionar", new_funcionario_path, "data-controller": "turbo",class: 'btn btn-primary text-white' %>
 </div>
 
 <br />
@@ -19,11 +19,9 @@
                       <tr id="funcionario_<%= funcionario.id %>">
                         <td><%= funcionario.nome %></td>
                         <td>
-                          <%= link_to "Benefícios", funcionariobeneficios_path(funcionario_id:funcionario.id), class: 'btn btn-info btn-sm' %>
-                          <%= link_to "Editar", edit_funcionario_path(funcionario), "data-controller": "turbo", class: 'btn btn-warning btn-sm' %>
-                          <%= link_to "Deletar", funcionario, class: 'btn btn-danger btn-sm',
-                                  "data-turbo-method": :delete,
-                                  "data-turbo-confirm": "Tem certeza?" %>
+                          <%= link_to "Benefícios", funcionariobeneficios_path(funcionario_id:funcionario.id), class: 'btn btn-info btn-sm text-white' %>
+                          <%= link_to "Editar", edit_funcionario_path(funcionario), "data-controller": "turbo", class: 'btn btn-warning btn-sm text-white' %>
+                           <%= link_to 'Deletar', funcionario_path(funcionario), class: 'btn btn-danger btn-sm text-white', data: {turbo_method: :delete, confirm: 'Tem certeza?'} %>      
                         </td>
                     </tr>
                     <% end %>

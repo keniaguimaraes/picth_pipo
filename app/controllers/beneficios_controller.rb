@@ -45,7 +45,7 @@ class BeneficiosController < ApplicationController
   # DELETE /beneficios/1 or /beneficios/1.json
   def destroy
     @beneficio.destroy
-    redirect_to "/beneficios/", notice: "Beneficio Exclúido!"
+    redirect_to "/beneficios/", notice: "Beneficio Exclúido!",status: :see_other
   end
 
   private

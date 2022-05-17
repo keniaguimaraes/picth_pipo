@@ -44,7 +44,8 @@ class ClientesController < ApplicationController
   # DELETE /clientes/1 or /clientes/1.json
   def destroy
     @cliente.destroy
-    redirect_to "/clientes/", notice: "Cliente Exclúido!"
+    redirect_to "/clientes/", notice:"Cliente excluído!",status: :see_other
+
   end
 
   private

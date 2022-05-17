@@ -26,38 +26,31 @@ class FuncionariosController < ApplicationController
   def create
     @funcionario = Funcionario.new(funcionario_params)
 
-    respond_to do |format|
+  #  respond_to do |format|
       if @funcionario.save
-        format.html { redirect_to "/funcionarios/", notice: "Funcionário adicionado!" }
-        #format.json { render :show, status: :created, location: @funcionario }
-        format.json { head :no_content }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        #format.json { render json: @funcionario.errors, status: :unprocessable_entity }
-      end
-    end
+       flash.now[:notice] = "Funcionário foi incluído! "
+       redirect_to  "/funcionarios/"
+      else 
+        render :new, status: :unprocessable_entity
+      end  
+   # end
   end
 
   # PATCH/PUT /funcionarios/1 or /funcionarios/1.json
   def update
-    respond_to do |format|
       if @funcionario.update(funcionario_params)
-        format.html { redirect_to "/funcionarios/", notice: "Funcionário editado" }
-        format.json { head :no_content }
+        redirect_to "/funcionarios/", notice: "Funcionário editado" 
       else
-        format.html { render :edit, status: :unprocessable_entity }
-      end
-    end
+        render :edit, status: :unprocessable_entity
+       end
   end
 
   # DELETE /funcionarios/1 or /funcionarios/1.json
   def destroy
     @funcionario= Funcionario.find(params[:id])
     @funcionario.destroy
-    respond_to do |format|
-      format.html { redirect_to "/funcionarios/", notice: "Funcionário excluído!" }
-      format.json { head :no_content }
-    end
+    flash.now[:notice] = "Funcionário excluído! "
+    redirect_to  "/funcionarios/",status: :see_other
   end
 
   private

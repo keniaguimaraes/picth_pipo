@@ -17,21 +17,33 @@
   <table class="table table-striped" cellspacing="2" cellpadding="0" width="100%" height="100" >
     <tr><td colspan="4" algin ="center"><b><h2>Dados Pessoais</b></h2></td></tr>
       <br/>
-      <tr>
-        <td algin ="left"><b>NOME:</b> <%=@funcionariobeneficio.funcionario.nome %></td>
-      </tr>
+
+      <% if @funcionariobeneficio.beneficio_id >=1 or @funcionariobeneficio.beneficio_id <=3%>
+        <tr>
+          <td algin ="left"><b>NOME:</b> <%=@funcionariobeneficio.funcionario.nome %></td>
+        </tr>
+      <%end%>
+
       <tr>
         <td algin ="left"><b>CPF: </b><%=@funcionariobeneficio.funcionario.cpf %></td>
       </tr>
-      <tr>
+
+     
+       <%if @funcionariobeneficio.beneficio_id == 2%>
+       <tr>
         <td algin ="left"><b>ENDEREÇO: </b><%=@funcionariobeneficio.funcionario.endereco %></td>
       </tr>
+      <%end%>
+      <%if @funcionariobeneficio.beneficio_id == 1%>
       <tr>
         <td algin ="left"><b>EMAIL: </b> <%=@funcionariobeneficio.funcionario.email %></td>
       </tr>
+      <%end%>
+      <%if @funcionariobeneficio.beneficio_id ==1 or @funcionariobeneficio.beneficio_id == 2%>
       <tr>
         <td algin ="left"><b>DATA ADMISSAO: </b> <%=@funcionariobeneficio.funcionario.data_admissao %></td>
       </tr>
+      <%end%>
       <tr>
         <td algin ="left"><b>EMPRESA: </b> <%= @funcionariobeneficio.funcionario.cliente.nome %></td>
       </tr>

@@ -1,41 +1,33 @@
-<%= form_with(model: funcionariobeneficio) do |form| %>
-  <% if funcionariobeneficio.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(funcionariobeneficio.errors.count, "error") %> prohibited this funcionariobeneficio from being saved:</h2>
-      <ul>
-        <% funcionariobeneficio.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= form_with(model: funcionariobeneficio,html: { data: { controller: "masks" } }) do |form| %>
+ 
        
    <div class="item form-group<%=  @funcionariobeneficio.errors[:beneficio_id].any? ? ' has-error has-feedback' : '' %>">
       <%= form.label :beneficio_id, "Benefício " %>
       <div class="input-group">
         <%= collection_select(:funcionariobeneficio, :beneficio_id, @beneficios, :id, :nome, {:prompt => 'Selecione um Benefício'}, { class: "form-control" })%>
         <%if @funcionariobeneficio.errors[:beneficio_id].any? %>
-          <p class="bg-danger"><%= @funcionariobeneficio.errors[:beneficio_id].to_s[/\w([^"]*)/] %></p>
+          <p class="bg-danger text-white"><%= @funcionariobeneficio.errors[:beneficio_id].to_s[/\w([^"]*)/] %></p>
         <% end %>
       </div>
     </div>
 
-    <div class="item form-group<%= @funcionariobeneficio.errors[:peso].any? ? ' has-error has-feedback' : '' %>">
-    <%= form.label :peso, "Peso " %>
-      <div class="input-group">
-        <%=  form.number_field :peso, value: number_to_currency(form.object.peso.to_f, delimiter: '', unit: ''), step: :any%>
-        <%if @funcionariobeneficio.errors[:peso].any? %>
-          <p class="bg-danger"><%= @funcionariobeneficio.errors[:peso].to_s[/\w([^"]*)/] %></p>
-        <% end %>
+      <div class="item form-group<%= @funcionariobeneficio.errors[:peso].any? ? ' has-error has-feedback' : '' %>">
+      <%= form.label :peso, "Peso " %>
+        <div class="input-group">
+          <%=  form.number_field :peso, class: 'form-control',value: number_to_currency(form.object.peso.to_f, delimiter: '.', unit: ''), step: :any%>
+          <%if @funcionariobeneficio.errors[:peso].any? %>
+            <p class="bg-danger text-white"><%= @funcionariobeneficio.errors[:peso].to_s[/\w([^"]*)/] %></p>
+          <% end %>
+        </div>
       </div>
-    </div>
+ 
 
     <div class="item form-group<%= @funcionariobeneficio.errors[:altura].any? ? ' has-error has-feedback' : '' %>">
     <%= form.label :altura, "Altura " %>
       <div class="input-group">
-        <%= form.number_field :altura, value: number_to_currency(form.object.altura.to_f, delimiter: '', unit: ''), step: :any%>        
+        <%= form.number_field :altura, class: 'form-control',value: number_to_currency(form.object.altura.to_f, delimiter: '.', unit: ''), step: :any%>        
         <%if @funcionariobeneficio.errors[:altura].any? %>
-          <p class="bg-danger"><%= @funcionariobeneficio.errors[:altura].to_s[/\w([^"]*)/] %></p>
+          <p class="bg-danger text-white"><%= @funcionariobeneficio.errors[:altura].to_s[/\w([^"]*)/] %></p>
         <% end %>
       </div>
     </div>
@@ -45,7 +37,7 @@
       <div class="input-group">
         <%= form.time_field :horas_meditadas, {:class=> "form-control", :placeholder=>"Ex: 01:00"} %>        
         <%if @funcionariobeneficio.errors[:horas_meditadas].any? %>
-          <p class="bg-danger"><%= @funcionariobeneficio.errors[:horas_meditadas].to_s[/\w([^"]*)/] %></p>
+          <p class="bg-danger text-white"><%= @funcionariobeneficio.errors[:horas_meditadas].to_s[/\w([^"]*)/] %></p>
         <% end %>
       </div>
     </div>

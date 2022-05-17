@@ -53,7 +53,7 @@ class FuncionariobeneficiosController < ApplicationController
   def destroy
     @funcionariobeneficio = Funcionariobeneficio.find(params[:id])
     @funcionariobeneficio.destroy
-    redirect_to '/funcionarios/'
+    redirect_to '/funcionarios/',status: :see_other,notice:"Benefício excluído!"
   end
 
   def ficha
@@ -63,7 +63,6 @@ class FuncionariobeneficiosController < ApplicationController
         format.pdf { render pdf: "",
           footer: { center: "[page] of [topage]" }
         }
-        
       end 
   end
     

@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   # root "articles#index"
   root to: 'home#index'
   get "ficha", to: "funcionariobeneficios#ficha"
+  delete '/clientes/:id', to: 'clientes#delete'
 end

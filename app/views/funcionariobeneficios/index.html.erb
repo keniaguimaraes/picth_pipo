@@ -16,7 +16,7 @@
 </div>
 
 <div>  
-   <%= link_to "Adicionar", new_funcionariobeneficio_path(funcionario_id:@funcionario_id), "data-controller": "turbo",class: 'btn btn-primary' %>
+   <%= link_to "Adicionar", new_funcionariobeneficio_path(funcionario_id:@funcionario_id,cliente_id:@funcionarios.cliente.id), "data-controller": "turbo",class: 'btn btn-primary text-white' %>
 </div>
 
 <br />
@@ -35,11 +35,9 @@
               <tr id="funcionariobeneficio_<%= funcionariobeneficio.id %>">
                 <td><%= funcionariobeneficio.beneficio.nome %></td>
                 <td>
-                  <%= link_to "Ficha",  ficha_path(id:funcionariobeneficio.id,format: 'pdf'), target: '_blank', class: 'btn btn-success btn-sm' %>
-                  <%= link_to "Editar", edit_funcionariobeneficio_path(funcionariobeneficio), "data-controller": "turbo", class: 'btn btn-warning btn-sm' %>
-                  <%= link_to "Deletar", funcionariobeneficio, class: 'btn btn-danger btn-sm',
-                                  "data-turbo-method": :delete,
-                                  "data-turbo-confirm": "Are you sure?" %>
+                  <%= link_to "Ficha",  ficha_path(id:funcionariobeneficio.id,format: 'pdf'), target: '_blank', class: 'btn btn-success btn-sm text-white' %>
+                  <%= link_to "Editar", edit_funcionariobeneficio_path(funcionariobeneficio), "data-controller": "turbo", class: 'btn btn-warning btn-sm text-white' %>
+                  <%= link_to 'Deletar', funcionariobeneficio_path(funcionariobeneficio),class: 'btn btn-danger btn-sm text-white', data: {turbo_method: :delete, confirm: 'Tem certeza?'} %>                 
                 </td>
             </tr>
             <% end %>

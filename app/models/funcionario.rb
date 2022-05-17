@@ -2,13 +2,13 @@ class Funcionario < ApplicationRecord
     belongs_to:cliente
     has_many:funcionariobeneficio
     
-    validates :cliente_id, presence: true
-
-    validates :nome, presence: {message: 'não pode ser deixado em branco'},
-        length: {minimum: 2, message: 'deve ter pelo menos 2 caracteres'}
-
-    validates :cpf, presence: true, length: { minimum: 11 }
-    validates :endereco, presence: true
-    validates :data_admissao, presence: true
-    validates :email, presence: true, format: {with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, on: :create}, uniqueness: {case_sensitive: false}
+    validates :cliente_id, presence: {message: 'Indique uma empresa'}
+    validates :nome, length: {minimum: 2, message: 'Deve ter pelo menos 2 caracteres'}
+    validates :cpf, presence: {message: 'Não pode ser deixado em branco'}
+    validates :email, format:{with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, on: :create}
+    validate :cpf_valid?
+    def cpf_valid?
+        return if CPF.valid?(cpf)
+        errors.add(:cpf)
+    end
 end

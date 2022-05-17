@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 <div>  
-   <%= link_to "Adicionar", new_cliente_path, "data-controller": "turbo",class: 'btn btn-primary' %>
+   <%= link_to "Adicionar", new_cliente_path, "data-controller": "turbo",class: 'btn btn-primary text-white' %>
 </div>
 
 <br />
@@ -19,8 +19,8 @@
               <tr id="cliente_<%= cliente.id %>">
                 <td><%= cliente.nome %></td>
                 <td>
-                  <%= link_to "Editar", edit_cliente_path(cliente), "data-controller": "turbo", class: 'btn btn-warning btn-sm' %>
-                  <%= link_to "Deletar",  cliente_path(cliente), "data-turbo-method": :delete,"data-turbo-confirm": "Tem certeza?",class: 'btn btn-danger btn-sm' %>
+                  <%= link_to "Editar", edit_cliente_path(cliente), "data-controller": "turbo", class: 'btn btn-warning btn-sm text white' %>
+                  <%= link_to 'Deletar', cliente_path(cliente),class: 'btn btn-danger btn-sm text-white', data: {turbo_method: :delete, confirm: 'Tem certeza?'} %>
                 </td>
             </tr>
             <% end %>
