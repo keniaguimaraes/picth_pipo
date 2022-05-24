@@ -1,6 +1,6 @@
 class FuncionariobeneficiosController < ApplicationController
   before_action :set_funcionariobeneficio, only: %i[show edit update ]
-  before_action :set_beneficio, only: [:new, :edit, :create,:index,:update]
+  before_action :set_beneficio, only: [:edit, :create,:update]
  
 
   # GET /funcionariobeneficios or /funcionariobeneficios.json
@@ -18,9 +18,11 @@ class FuncionariobeneficiosController < ApplicationController
 
   # GET /funcionariobeneficios/new
   def new
-    @beneficios = Beneficio.all
-    @funcionariobeneficio = Funcionariobeneficio.new
-    @@funcionarioid= params[:funcionario_id]
+   @@funcionarioid= params[:funcionario_id]
+   @funcionario = Funcionario.find(@@funcionarioid)
+   @cliente_id = @funcionario.cliente.id
+   @beneficios = Beneficio.select("beneficios.*").joins("JOIN clientebeneficios ON clientebeneficios.beneficio_id = beneficios.id ").where("clientebeneficios.cliente_id=?",@cliente_id).all
+   @funcionariobeneficio = Funcionariobeneficio.new
   end
 
   # GET /funcionariobeneficios/1/edit
@@ -60,13 +62,10 @@ class FuncionariobeneficiosController < ApplicationController
       @funcionariobeneficio  = Funcionariobeneficio.find(params[:id])
       respond_to do |format|
         format.html
-        format.pdf { render pdf: "",
-          footer: { center: "[page] of [topage]" }
-        }
+        format.pdf { render pdf: ""}
       end 
   end
     
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_funcionariobeneficio
@@ -79,6 +78,8 @@ class FuncionariobeneficiosController < ApplicationController
     end
 
     def set_beneficio
-      @beneficios = Beneficio.all
+      @funcionario = Funcionario.find(@@funcionarioid)
+      @cliente_id = @funcionario.cliente.id
+      @beneficios = Beneficio.select("beneficios.*").joins("JOIN clientebeneficios ON clientebeneficios.beneficio_id = beneficios.id ").where("clientebeneficios.cliente_id=?",@cliente_id).all
     end  
 end

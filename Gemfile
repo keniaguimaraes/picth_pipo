@@ -53,7 +53,7 @@ gem 'jquery-rails'
 gem "mime-types"
 #gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'main'
 gem  "will_paginate-bootstrap"
-gem  'wicked_pdf'
+gem 'wicked_pdf', :git=> 'https://github.com/mileszs/wicked_pdf.git'
 gem  'wkhtmltopdf-binary'
 
 group :development, :test do
@@ -65,6 +65,7 @@ end
 
 group :production do 
    gem "pg"
+   gem "wkhtmltopdf-heroku"
 end
 group :test do
   gem "capybara"

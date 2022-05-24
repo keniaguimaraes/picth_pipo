@@ -1,5 +1,14 @@
 <%= form_with(model: funcionariobeneficio,html: { data: { controller: "masks" } }) do |form| %>
- 
+   <% if @funcionariobeneficio.errors.any? %>
+      <div id="error_explanation">
+        <h6><%= pluralize(@funcionariobeneficio.errors.count, "error") %></h6>
+        <ul>
+          <% @funcionariobeneficio.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+   <% end %>
        
    <div class="item form-group<%=  @funcionariobeneficio.errors[:beneficio_id].any? ? ' has-error has-feedback' : '' %>">
       <%= form.label :beneficio_id, "Benefício " %>
@@ -14,7 +23,7 @@
       <div class="item form-group<%= @funcionariobeneficio.errors[:peso].any? ? ' has-error has-feedback' : '' %>">
       <%= form.label :peso, "Peso " %>
         <div class="input-group">
-          <%=  form.number_field :peso, class: 'form-control',value: number_to_currency(form.object.peso.to_f, delimiter: '.', unit: ''), step: :any%>
+          <%=  form.number_field :peso, class: 'form-control',value: number_to_currency(form.object.peso.to_f, delimiter: '.', unit: '',locale:"pt-BR"), step: :any%>
           <%if @funcionariobeneficio.errors[:peso].any? %>
             <p class="bg-danger text-white"><%= @funcionariobeneficio.errors[:peso].to_s[/\w([^"]*)/] %></p>
           <% end %>
@@ -25,7 +34,7 @@
     <div class="item form-group<%= @funcionariobeneficio.errors[:altura].any? ? ' has-error has-feedback' : '' %>">
     <%= form.label :altura, "Altura " %>
       <div class="input-group">
-        <%= form.number_field :altura, class: 'form-control',value: number_to_currency(form.object.altura.to_f, delimiter: '.', unit: ''), step: :any%>        
+        <%= form.number_field :altura, class: 'form-control',value: number_to_currency(form.object.altura.to_f, delimiter: '.', unit: '',locale:"pt-BR"), step: :any%>        
         <%if @funcionariobeneficio.errors[:altura].any? %>
           <p class="bg-danger text-white"><%= @funcionariobeneficio.errors[:altura].to_s[/\w([^"]*)/] %></p>
         <% end %>
