@@ -1,0 +1,747 @@
+[33mcommit 4ddc856d3cc57747430e0e527fc56fc5cd7d89a1[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m
+Author: keniaguimaraes <keniiarruda@gmail.com>
+Date:   Tue May 24 16:38:54 2022 -0300
+
+    Ajuste configuração wickedpdf
+
+ config/initializers/wicked_pdf.rb | 2 [32m+[m[31m-[m
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+[33mcommit 0e81982342de4263fc089d5279fb5183b10959fa[m
+Author: keniaguimaraes <keniiarruda@gmail.com>
+Date:   Tue May 24 16:24:20 2022 -0300
+
+    Finalizado validações e ficha.
+
+ .gitattributes                                                 |    14 [32m+[m[31m-[m
+ .gitignore                                                     |    70 [32m+[m[31m-[m
+ .ruby-version                                                  |     2 [32m+[m[31m-[m
+ Gemfile                                                        |   147 [32m+[m[31m-[m
+ Gemfile.lock                                                   |   574 [32m+[m[31m--[m
+ README.md                                                      |    36 [32m+[m[31m-[m
+ Rakefile                                                       |    12 [32m+[m[31m-[m
+ app/assets/builds/application.js.map                           |     2 [32m+[m[31m-[m
+ app/assets/config/manifest.js                                  |     6 [32m+[m[31m-[m
+ app/assets/javascript/sb-admin-2.js                            |    98 [32m+[m[31m-[m
+ app/assets/javascript/sb-admin-2.min.js                        |    12 [32m+[m[31m-[m
+ app/assets/javascript/scaffolds.scss                           |   168 [32m+[m[31m-[m
+ app/assets/stylesheets/application.css                         |    30 [32m+[m[31m-[m
+ app/assets/stylesheets/sb-admin-2.css                          | 22582 [32m+++++++++++++++++++++++++++++++++++++++++++++++++[m[31m--------------------------------------------------[m
+ app/assets/stylesheets/sb-admin-2.min.css                      |    18 [32m+[m[31m-[m
+ app/assets/stylesheets/scaffolds.scss                          |   168 [32m+[m[31m-[m
+ app/channels/application_cable/channel.rb                      |     8 [32m+[m[31m-[m
+ app/channels/application_cable/connection.rb                   |     8 [32m+[m[31m-[m
+ app/controllers/application_controller.rb                      |     4 [32m+[m[31m-[m
+ app/controllers/beneficios_controller.rb                       |   122 [32m+[m[31m-[m
+ app/controllers/clientes_controller.rb                         |   122 [32m+[m[31m-[m
+ app/controllers/funcionariobeneficios_controller.rb            |   169 [32m+[m[31m-[m
+ app/controllers/funcionarios_controller.rb                     |   140 [32m+[m[31m-[m
+ app/controllers/home_controller.rb                             |    18 [32m+[m[31m-[m
+ app/helpers/application_helper.rb                              |    10 [32m+[m[31m-[m
+ app/helpers/beneficios_helper.rb                               |     4 [32m+[m[31m-[m
+ app/helpers/clientes_helper.rb                                 |     4 [32m+[m[31m-[m
+ app/helpers/funcionariobeneficios_helper.rb                    |     4 [32m+[m[31m-[m
+ app/helpers/funcionarios_helper.rb                             |    10 [32m+[m[31m-[m
+ app/helpers/home_helper.rb                                     |     4 [32m+[m[31m-[m
+ app/javascript/application.js                                  |     8 [32m+[m[31m-[m
+ app/javascript/controllers/application.js                      |    18 [32m+[m[31m-[m
+ app/javascript/controllers/hello_controller.js                 |    14 [32m+[m[31m-[m
+ app/javascript/controllers/index.js                            |    28 [32m+[m[31m-[m
+ app/javascript/controllers/modal_controller.js                 |    30 [32m+[m[31m-[m
+ app/javascript/controllers/turbo_controller.js                 |    42 [32m+[m[31m-[m
+ app/jobs/application_job.rb                                    |    14 [32m+[m[31m-[m
+ app/mailers/application_mailer.rb                              |     8 [32m+[m[31m-[m
+ app/models/FuncionarioValidator.rb                             |    24 [32m+[m
+ app/models/application_record.rb                               |     6 [32m+[m[31m-[m
+ app/models/beneficio.rb                                        |     7 [32m+[m[31m-[m
+ app/models/cliente.rb                                          |     9 [32m+[m[31m-[m
+ app/models/clientebeneficio.rb                                 |     4 [32m+[m
+ app/models/funcionario.rb                                      |    28 [32m+[m[31m-[m
+ app/models/funcionariobeneficio.rb                             |    39 [32m+[m[31m-[m
+ app/views/beneficios/_beneficio.html.erb                       |    16 [32m+[m[31m-[m
+ app/views/beneficios/_form.html.erb                            |    60 [32m+[m[31m-[m
+ app/views/beneficios/_form_modal.html.erb                      |    36 [32m+[m[31m-[m
+ app/views/beneficios/edit.turbo_stream.erb                     |     8 [32m+[m[31m-[m
+ app/views/beneficios/index.html.erb                            |    60 [32m+[m[31m-[m
+ app/views/beneficios/new.turbo_stream.erb                      |     8 [32m+[m[31m-[m
+ app/views/clientes/_cliente.html.erb                           |    16 [32m+[m[31m-[m
+ app/views/clientes/_form.html.erb                              |    60 [32m+[m[31m-[m
+ app/views/clientes/_form_modal.html.erb                        |    34 [32m+[m[31m-[m
+ app/views/clientes/edit.turbo_stream.erb                       |     8 [32m+[m[31m-[m
+ app/views/clientes/index.html.erb                              |    62 [32m+[m[31m-[m
+ app/views/clientes/new.turbo_stream.erb                        |     6 [32m+[m[31m-[m
+ app/views/funcionariobeneficios/_form.html.erb                 |   107 [32m+[m[31m-[m
+ app/views/funcionariobeneficios/_form_modal.html.erb           |    40 [32m+[m[31m-[m
+ app/views/funcionariobeneficios/_funcionariobeneficio.html.erb |    60 [32m+[m[31m-[m
+ app/views/funcionariobeneficios/edit.turbo_stream.erb          |     8 [32m+[m[31m-[m
+ app/views/funcionariobeneficios/index.html.erb                 |    96 [32m+[m[31m-[m
+ app/views/funcionariobeneficios/new.turbo_stream.erb           |    10 [32m+[m[31m-[m
+ app/views/funcionarios/_form.html.erb                          |   144 [32m+[m[31m-[m
+ app/views/funcionarios/_form_modal.html.erb                    |    40 [32m+[m[31m-[m
+ app/views/funcionarios/_funcionario.html.erb                   |    54 [32m+[m[31m-[m
+ app/views/funcionarios/edit.turbo_stream.erb                   |    10 [32m+[m[31m-[m
+ app/views/funcionarios/index.html.erb                          |    76 [32m+[m[31m-[m
+ app/views/funcionarios/new.turbo_stream.erb                    |    10 [32m+[m[31m-[m
+ app/views/layouts/application.html.erb                         |   280 [32m+[m[31m-[m
+ app/views/layouts/mailer.html.erb                              |    26 [32m+[m[31m-[m
+ app/views/layouts/mailer.text.erb                              |     2 [32m+[m[31m-[m
+ bin/bundle                                                     |   228 [32m+[m[31m-[m
+ bin/importmap                                                  |     8 [32m+[m[31m-[m
+ bin/rails                                                      |     8 [32m+[m[31m-[m
+ bin/rake                                                       |     8 [32m+[m[31m-[m
+ bin/setup                                                      |    66 [32m+[m[31m-[m
+ config.ru                                                      |    12 [32m+[m[31m-[m
+ config/application.rb                                          |    44 [32m+[m[31m-[m
+ config/boot.rb                                                 |     8 [32m+[m[31m-[m
+ config/cable.yml                                               |    20 [32m+[m[31m-[m
+ config/database.yml                                            |    50 [32m+[m[31m-[m
+ config/environment.rb                                          |    10 [32m+[m[31m-[m
+ config/environments/development.rb                             |   140 [32m+[m[31m-[m
+ config/environments/production.rb                              |   188 [32m+[m[31m-[m
+ config/environments/test.rb                                    |   120 [32m+[m[31m-[m
+ config/importmap.rb                                            |    14 [32m+[m[31m-[m
+ config/initializers/assets.rb                                  |    28 [32m+[m[31m-[m
+ config/initializers/content_security_policy.rb                 |    52 [32m+[m[31m-[m
+ config/initializers/filter_parameter_logging.rb                |    16 [32m+[m[31m-[m
+ config/initializers/inflections.rb                             |    32 [32m+[m[31m-[m
+ config/initializers/permissions_policy.rb                      |    22 [32m+[m[31m-[m
+ config/initializers/wicked_pdf.rb                              |    66 [32m+[m[31m-[m
+ config/locales/en.yml                                          |    66 [32m+[m[31m-[m
+ config/locales/pt-BR.yml                                       |   223 [32m+[m
+ config/puma.rb                                                 |    86 [32m+[m[31m-[m
+ config/routes.rb                                               |    30 [32m+[m[31m-[m
+ config/storage.yml                                             |    68 [32m+[m[31m-[m
+ db/migrate/20220501072720_create_clientes.rb                   |    18 [32m+[m[31m-[m
+ db/migrate/20220501072757_create_beneficios.rb                 |    18 [32m+[m[31m-[m
+ db/migrate/20220502021157_create_funcionarios.rb               |    26 [32m+[m[31m-[m
+ db/migrate/20220502061141_add_cliente_id_to_funcionarios.rb    |    10 [32m+[m[31m-[m
+ db/migrate/20220502232723_create_funcionariobeneficios.rb      |    26 [32m+[m[31m-[m
+ db/migrate/20220523201441_create_clientebeneficios.rb          |     9 [32m+[m
+ db/schema.rb                                                   |     8 [32m+[m[31m-[m
+ db/seeds.rb                                                    |    25 [32m+[m[31m-[m
+ javascript/application.js                                      |     8 [32m+[m[31m-[m
+ javascript/controllers/application.js                          |    18 [32m+[m[31m-[m
+ javascript/controllers/hello_controller.js                     |    14 [32m+[m[31m-[m
+ javascript/controllers/index.js                                |    28 [32m+[m[31m-[m
+ javascript/controllers/modal_controller.js                     |    30 [32m+[m[31m-[m
+ javascript/controllers/turbo_controller.js                     |    42 [32m+[m[31m-[m
+ lib/active_model/validations/with.rb                           |    18 [32m+[m
+ node_modules/.yarn-integrity                                   |     2 [32m+[m[31m-[m
+ package.json                                                   |    38 [32m+[m[31m-[m
+ public/404.html                                                |   134 [32m+[m[31m-[m
+ public/422.html                                                |   134 [32m+[m[31m-[m
+ public/500.html                                                |   132 [32m+[m[31m-[m
+ public/robots.txt                                              |     2 [32m+[m[31m-[m
+ test/application_system_test_case.rb                           |    10 [32m+[m[31m-[m
+ test/channels/application_cable/connection_test.rb             |    22 [32m+[m[31m-[m
+ test/controllers/beneficios_controller_test.rb                 |    96 [32m+[m[31m-[m
+ test/controllers/clientes_controller_test.rb                   |    96 [32m+[m[31m-[m
+ test/controllers/funcionariobeneficios_controller_test.rb      |    96 [32m+[m[31m-[m
+ test/controllers/funcionarios_controller_test.rb               |    96 [32m+[m[31m-[m
+ test/controllers/home_controller_test.rb                       |    14 [32m+[m[31m-[m
+ test/fixtures/beneficios.yml                                   |    14 [32m+[m[31m-[m
+ test/fixtures/clientebeneficios.yml                            |    11 [32m+[m
+ test/fixtures/clientes.yml                                     |    14 [32m+[m[31m-[m
+ test/fixtures/funcionariobeneficios.yml                        |    30 [32m+[m[31m-[m
+ test/fixtures/funcionarios.yml                                 |    30 [32m+[m[31m-[m
+ test/models/beneficio_test.rb                                  |    14 [32m+[m[31m-[m
+ test/models/cliente_test.rb                                    |    14 [32m+[m[31m-[m
+ test/models/clientebeneficio_test.rb                           |     7 [32m+[m
+ test/models/funcionario_test.rb                                |    14 [32m+[m[31m-[m
+ test/models/funcionariobeneficio_test.rb                       |    14 [32m+[m[31m-[m
+ test/system/beneficios_test.rb                                 |    82 [32m+[m[31m-[m
+ test/system/clientes_test.rb                                   |    82 [32m+[m[31m-[m
+ test/system/funcionariobeneficios_test.rb                      |    98 [32m+[m[31m-[m
+ test/system/funcionarios_test.rb                               |    98 [32m+[m[31m-[m
+ test/test_helper.rb                                            |    26 [32m+[m[31m-[m
+ yarn.lock                                                      |   596 [32m+[m[31m--[m
+ 142 files changed, 15215 insertions(+), 14894 deletions(-)
+
+[33mcommit b543cf84cbad5fa57c0c16deec9e2aa1772510ea[m
+Author: Kenia Guimaraes <keniiarruda@gmail.com>
+Date:   Tue May 17 04:09:25 2022 -0300
+
+    Adiciona contadores no dashboard.
+
+ README.md                                    |  3 [32m+++[m
+ app/controllers/home_controller.rb           |  4 [32m++++[m
+ app/controllers/projects_controller.rb       | 58 [31m----------------------------------------------------------[m
+ app/models/project.rb                        |  4 [31m----[m
+ app/views/home/index.html.erb                | 25 [32m++++++++++[m[31m---------------[m
+ app/views/projects/_form.html.erb            | 28 [31m----------------------------[m
+ app/views/projects/_form_modal.html.erb      | 15 [31m---------------[m
+ app/views/projects/_project.html.erb         | 13 [31m-------------[m
+ app/views/projects/edit.html.erb             | 10 [31m----------[m
+ app/views/projects/edit.turbo_stream.erb     |  4 [31m----[m
+ app/views/projects/index.html.erb            |  5 [31m-----[m
+ app/views/projects/new.turbo_stream.erb      |  4 [31m----[m
+ app/views/projects/new333.html.erb           |  9 [31m---------[m
+ app/views/projects/show.html.erb             |  7 [31m-------[m
+ config/routes.rb                             |  1 [31m-[m
+ db/migrate/20220206020936_create_projects.rb |  8 [31m--------[m
+ 16 files changed, 17 insertions(+), 181 deletions(-)
+
+[33mcommit 623415ddd40465f4daeab7430b240d1df08d1ed6[m
+Author: Kenia Guimaraes <keniiarruda@gmail.com>
+Date:   Tue May 17 02:50:55 2022 -0300
+
+    Adiciona layout do dashboard.
+
+ app/assets/stylesheets/application.css |  9 [31m---------[m
+ app/assets/stylesheets/sb-admin-2.css  |  4 [32m++[m[31m--[m
+ app/models/funcionariobeneficio.rb     |  6 [32m+++[m[31m---[m
+ app/views/home/index.html.erb          | 68 [32m++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++[m
+ 4 files changed, 73 insertions(+), 14 deletions(-)
+
+[33mcommit 342039341a0ed53b57d1393c9922cfdb839ba700[m
+Author: Kenia Guimaraes <keniiarruda@gmail.com>
+Date:   Tue May 17 02:29:12 2022 -0300
+
+    Adiciona ultimos ajustes.
+
+ Gemfile                                                          |     2 [32m+[m[31m-[m
+ Gemfile.lock                                                     |     2 [32m+[m
+ app/assets/stylesheets/application.css                           |    10 [32m+[m
+ app/assets/stylesheets/sb-admin-2.css                            |    10 [32m+[m
+ app/controllers/beneficios_controller.rb                         |     2 [32m+[m[31m-[m
+ app/controllers/clientes_controller.rb                           |     3 [32m+[m[31m-[m
+ app/controllers/funcionariobeneficios_controller.rb              |     3 [32m+[m[31m-[m
+ app/controllers/funcionarios_controller.rb                       |    31 [32m+[m[31m-[m
+ app/helpers/application_helper.rb                                |     3 [32m+[m
+ app/helpers/funcionarios_helper.rb                               |     3 [32m+[m
+ app/javascript/controllers/masks.js                              |    15 [32m+[m
+ app/models/funcionario.rb                                        |    18 [32m+[m[31m-[m
+ app/models/funcionariobeneficio.rb                               |    14 [32m+[m
+ app/models/project.rb                                            |     1 [32m+[m
+ app/views/beneficios/index.html.erb                              |     4 [32m+[m[31m-[m
+ app/views/clientes/index.html.erb                                |     6 [32m+[m[31m-[m
+ app/views/funcionariobeneficios/_form.html.erb                   |    38 [32m+[m[31m-[m
+ app/views/funcionariobeneficios/_form_modal.html.erb             |     3 [32m+[m
+ app/views/funcionariobeneficios/_funcionariobeneficio.html.erb   |     3 [32m+[m
+ app/views/funcionariobeneficios/edit.turbo_stream.erb            |     1 [32m+[m
+ app/views/funcionariobeneficios/ficha.pdf.erb                    |    20 [32m+[m[31m-[m
+ app/views/funcionariobeneficios/index.html.erb                   |    10 [32m+[m[31m-[m
+ app/views/funcionariobeneficios/new.html.erb                     |     0
+ app/views/funcionariobeneficios/new.turbo_stream.erb             |     2 [32m+[m
+ app/views/funcionariobeneficios/show.html.erb                    |     0
+ app/views/funcionarios/_form.html.erb                            |    31 [32m+[m[31m-[m
+ app/views/funcionarios/_form_modal.html.erb                      |     3 [32m+[m
+ app/views/funcionarios/edit.turbo_stream.erb                     |     2 [32m+[m
+ app/views/funcionarios/index.html.erb                            |    12 [32m+[m[31m-[m
+ app/views/funcionarios/new.html.erb                              |     0
+ app/views/funcionarios/new.turbo_stream.erb                      |     3 [32m+[m[31m-[m
+ app/views/funcionarios/show.html.erb                             |     0
+ app/views/layouts/_flash.html.erb                                |     5 [32m+[m
+ config/routes.rb                                                 |     1 [32m+[m
+ node_modules/.yarn-integrity                                     |     4 [32m+[m
+ node_modules/jquery-mask-plugin/.jshintrc                        |    34 [32m+[m
+ node_modules/jquery-mask-plugin/.ruby-version                    |     1 [32m+[m
+ node_modules/jquery-mask-plugin/.travis.yml                      |     7 [32m+[m
+ node_modules/jquery-mask-plugin/CHANGELOG.md                     |   921 [32m+++++++++[m
+ node_modules/jquery-mask-plugin/CONTRIBUTING.md                  |     9 [32m+[m
+ node_modules/jquery-mask-plugin/Dockerfile                       |    36 [32m+[m
+ node_modules/jquery-mask-plugin/Gruntfile.js                     |    43 [32m+[m
+ node_modules/jquery-mask-plugin/ISSUE_TEMPLATE.md                |    22 [32m+[m
+ node_modules/jquery-mask-plugin/LICENSE                          |    26 [32m+[m
+ node_modules/jquery-mask-plugin/README.md                        |   137 [32m++[m
+ node_modules/jquery-mask-plugin/bower.json                       |    12 [32m+[m
+ node_modules/jquery-mask-plugin/component.json                   |    10 [32m+[m
+ node_modules/jquery-mask-plugin/composer.json                    |    19 [32m+[m
+ node_modules/jquery-mask-plugin/deploy.rb                        |    77 [32m+[m
+ node_modules/jquery-mask-plugin/dist/jquery.mask.js              |   604 [32m++++++[m
+ node_modules/jquery-mask-plugin/dist/jquery.mask.min.js          |    19 [32m+[m
+ node_modules/jquery-mask-plugin/docker-compose.yml               |     4 [32m+[m
+ node_modules/jquery-mask-plugin/package.js                       |    14 [32m+[m
+ node_modules/jquery-mask-plugin/package.json                     |    34 [32m+[m
+ node_modules/jquery-mask-plugin/src/jquery.mask.js               |   604 [32m++++++[m
+ node_modules/jquery-mask-plugin/test/jquery.mask.test.js         |   718 [32m+++++++[m
+ node_modules/jquery-mask-plugin/test/qunit.css                   |   244 [32m+++[m
+ node_modules/jquery-mask-plugin/test/qunit.js                    |  2152 [32m+++++++++++++++++++[m
+ node_modules/jquery-mask-plugin/test/sinon-1.10.3.js             |  5073 [32m+++++++++++++++++++++++++++++++++++++++++++++[m
+ node_modules/jquery-mask-plugin/test/sinon-qunit-1.0.0.js        |    62 [32m+[m
+ node_modules/jquery-mask-plugin/test/sinon-qunit.js              |    62 [32m+[m
+ node_modules/jquery-mask-plugin/test/test-for-jquery-1.11.1.html |    35 [32m+[m
+ node_modules/jquery-mask-plugin/test/test-for-jquery-1.7.2.html  |    35 [32m+[m
+ node_modules/jquery-mask-plugin/test/test-for-jquery-1.8.3.html  |    35 [32m+[m
+ node_modules/jquery-mask-plugin/test/test-for-jquery-1.9.1.html  |    35 [32m+[m
+ node_modules/jquery-mask-plugin/test/test-for-jquery-2.1.1.html  |    35 [32m+[m
+ node_modules/jquery-mask-plugin/test/test-for-jquery-3.0.0.html  |    35 [32m+[m
+ node_modules/jquery-mask-plugin/test/test-for-zepto.html         |    36 [32m+[m
+ node_modules/jquery-mask-plugin/test/zepto/data.js               |    80 [32m+[m
+ node_modules/jquery-mask-plugin/test/zepto/event.js              |   282 [32m+++[m
+ node_modules/jquery-mask-plugin/test/zepto/zepto.min.js          |  1580 [32m++++++++++++++[m
+ node_modules/jquery/AUTHORS.txt                                  |   331 [32m+++[m
+ node_modules/jquery/LICENSE.txt                                  |    20 [32m+[m
+ node_modules/jquery/README.md                                    |    62 [32m+[m
+ node_modules/jquery/bower.json                                   |    14 [32m+[m
+ node_modules/jquery/dist/jquery.js                               | 10881 [32m+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++[m
+ node_modules/jquery/dist/jquery.min.js                           |     2 [32m+[m
+ node_modules/jquery/dist/jquery.min.map                          |     1 [32m+[m
+ node_modules/jquery/dist/jquery.slim.js                          |  8782 [32m++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++[m
+ node_modules/jquery/dist/jquery.slim.min.js                      |     2 [32m+[m
+ node_modules/jquery/dist/jquery.slim.min.map                     |     1 [32m+[m
+ node_modules/jquery/external/sizzle/LICENSE.txt                  |    36 [32m+[m
+ node_modules/jquery/external/sizzle/dist/sizzle.js               |  2478 [32m++++++++++++++++++++++[m
+ node_modules/jquery/external/sizzle/dist/sizzle.min.js           |     3 [32m+[m
+ node_modules/jquery/external/sizzle/dist/sizzle.min.map          |     1 [32m+[m
+ node_modules/jquery/package.json                                 |   116 [32m++[m
+ node_modules/jquery/src/ajax.js                                  |   876 [32m++++++++[m
+ node_modules/jquery/src/ajax/jsonp.js                            |   103 [32m+[m
+ node_modules/jquery/src/ajax/load.js                             |    77 [32m+[m
+ node_modules/jquery/src/ajax/script.js                           |    74 [32m+[m
+ node_modules/jquery/src/ajax/var/location.js                     |     5 [32m+[m
+ node_modules/jquery/src/ajax/var/nonce.js                        |     5 [32m+[m
+ node_modules/jquery/src/ajax/var/rquery.js                       |     5 [32m+[m
+ node_modules/jquery/src/ajax/xhr.js                              |   170 [32m++[m
+ node_modules/jquery/src/attributes.js                            |    13 [32m+[m
+ node_modules/jquery/src/attributes/attr.js                       |   141 [32m++[m
+ node_modules/jquery/src/attributes/classes.js                    |   186 [32m++[m
+ node_modules/jquery/src/attributes/prop.js                       |   143 [32m++[m
+ node_modules/jquery/src/attributes/support.js                    |    33 [32m+[m
+ node_modules/jquery/src/attributes/val.js                        |   191 [32m++[m
+ node_modules/jquery/src/callbacks.js                             |   236 [32m+++[m
+ node_modules/jquery/src/core.js                                  |   400 [32m++++[m
+ node_modules/jquery/src/core/DOMEval.js                          |    43 [32m+[m
+ node_modules/jquery/src/core/access.js                           |    72 [32m+[m
+ node_modules/jquery/src/core/camelCase.js                        |    23 [32m+[m
+ node_modules/jquery/src/core/init.js                             |   129 [32m++[m
+ node_modules/jquery/src/core/isAttached.js                       |    26 [32m+[m
+ node_modules/jquery/src/core/nodeName.js                         |    13 [32m+[m
+ node_modules/jquery/src/core/parseHTML.js                        |    65 [32m+[m
+ node_modules/jquery/src/core/parseXML.js                         |    35 [32m+[m
+ node_modules/jquery/src/core/ready-no-deferred.js                |    97 [32m+[m
+ node_modules/jquery/src/core/ready.js                            |    86 [32m+[m
+ node_modules/jquery/src/core/readyException.js                   |    13 [32m+[m
+ node_modules/jquery/src/core/stripAndCollapse.js                 |    14 [32m+[m
+ node_modules/jquery/src/core/support.js                          |    20 [32m+[m
+ node_modules/jquery/src/core/toType.js                           |    20 [32m+[m
+ node_modules/jquery/src/core/var/rsingleTag.js                   |     7 [32m+[m
+ node_modules/jquery/src/css.js                                   |   494 [32m+++++[m
+ node_modules/jquery/src/css/addGetHookIf.js                      |    26 [32m+[m
+ node_modules/jquery/src/css/adjustCSS.js                         |    74 [32m+[m
+ node_modules/jquery/src/css/curCSS.js                            |    65 [32m+[m
+ node_modules/jquery/src/css/finalPropName.js                     |    42 [32m+[m
+ node_modules/jquery/src/css/hiddenVisibleSelectors.js            |    15 [32m+[m
+ node_modules/jquery/src/css/showHide.js                          |   105 [32m+[m
+ node_modules/jquery/src/css/support.js                           |   152 [32m++[m
+ node_modules/jquery/src/css/var/cssExpand.js                     |     5 [32m+[m
+ node_modules/jquery/src/css/var/getStyles.js                     |    17 [32m+[m
+ node_modules/jquery/src/css/var/isHiddenWithinTree.js            |    34 [32m+[m
+ node_modules/jquery/src/css/var/rboxStyle.js                     |     7 [32m+[m
+ node_modules/jquery/src/css/var/rnumnonpx.js                     |     7 [32m+[m
+ node_modules/jquery/src/css/var/swap.js                          |    26 [32m+[m
+ node_modules/jquery/src/data.js                                  |   180 [32m++[m
+ node_modules/jquery/src/data/Data.js                             |   162 [32m++[m
+ node_modules/jquery/src/data/var/acceptData.js                   |    19 [32m+[m
+ node_modules/jquery/src/data/var/dataPriv.js                     |     7 [32m+[m
+ node_modules/jquery/src/data/var/dataUser.js                     |     7 [32m+[m
+ node_modules/jquery/src/deferred.js                              |   399 [32m++++[m
+ node_modules/jquery/src/deferred/exceptionHook.js                |    21 [32m+[m
+ node_modules/jquery/src/deprecated.js                            |    87 [32m+[m
+ node_modules/jquery/src/deprecated/ajax-event-alias.js           |    22 [32m+[m
+ node_modules/jquery/src/deprecated/event.js                      |    50 [32m+[m
+ node_modules/jquery/src/dimensions.js                            |    60 [32m+[m
+ node_modules/jquery/src/effects.js                               |   702 [32m+++++++[m
+ node_modules/jquery/src/effects/Tween.js                         |   125 [32m++[m
+ node_modules/jquery/src/effects/animatedSelector.js              |    15 [32m+[m
+ node_modules/jquery/src/event.js                                 |   874 [32m++++++++[m
+ node_modules/jquery/src/event/focusin.js                         |    58 [32m+[m
+ node_modules/jquery/src/event/support.js                         |    11 [32m+[m
+ node_modules/jquery/src/event/trigger.js                         |   199 [32m++[m
+ node_modules/jquery/src/exports/amd.js                           |    26 [32m+[m
+ node_modules/jquery/src/exports/global.js                        |    34 [32m+[m
+ node_modules/jquery/src/jquery.js                                |    41 [32m+[m
+ node_modules/jquery/src/manipulation.js                          |   480 [32m+++++[m
+ node_modules/jquery/src/manipulation/_evalUrl.js                 |    32 [32m+[m
+ node_modules/jquery/src/manipulation/buildFragment.js            |   106 [32m+[m
+ node_modules/jquery/src/manipulation/getAll.js                   |    32 [32m+[m
+ node_modules/jquery/src/manipulation/setGlobalEval.js            |    22 [32m+[m
+ node_modules/jquery/src/manipulation/support.js                  |    41 [32m+[m
+ node_modules/jquery/src/manipulation/var/rscriptType.js          |     5 [32m+[m
+ node_modules/jquery/src/manipulation/var/rtagName.js             |     8 [32m+[m
+ node_modules/jquery/src/manipulation/wrapMap.js                  |    30 [32m+[m
+ node_modules/jquery/src/offset.js                                |   232 [32m+++[m
+ node_modules/jquery/src/queue.js                                 |   145 [32m++[m
+ node_modules/jquery/src/queue/delay.js                           |    24 [32m+[m
+ node_modules/jquery/src/selector-native.js                       |   241 [32m+++[m
+ node_modules/jquery/src/selector-sizzle.js                       |    19 [32m+[m
+ node_modules/jquery/src/selector.js                              |     3 [32m+[m
+ node_modules/jquery/src/serialize.js                             |   134 [32m++[m
+ node_modules/jquery/src/traversing.js                            |   198 [32m++[m
+ node_modules/jquery/src/traversing/findFilter.js                 |    97 [32m+[m
+ node_modules/jquery/src/traversing/var/dir.js                    |    22 [32m+[m
+ node_modules/jquery/src/traversing/var/rneedsContext.js          |     8 [32m+[m
+ node_modules/jquery/src/traversing/var/siblings.js               |    17 [32m+[m
+ node_modules/jquery/src/var/ObjectFunctionString.js              |     7 [32m+[m
+ node_modules/jquery/src/var/arr.js                               |     5 [32m+[m
+ node_modules/jquery/src/var/class2type.js                        |     6 [32m+[m
+ node_modules/jquery/src/var/document.js                          |     5 [32m+[m
+ node_modules/jquery/src/var/documentElement.js                   |     7 [32m+[m
+ node_modules/jquery/src/var/flat.js                              |    16 [32m+[m
+ node_modules/jquery/src/var/fnToString.js                        |     7 [32m+[m
+ node_modules/jquery/src/var/getProto.js                          |     5 [32m+[m
+ node_modules/jquery/src/var/hasOwn.js                            |     7 [32m+[m
+ node_modules/jquery/src/var/indexOf.js                           |     7 [32m+[m
+ node_modules/jquery/src/var/isFunction.js                        |    17 [32m+[m
+ node_modules/jquery/src/var/isWindow.js                          |     8 [32m+[m
+ node_modules/jquery/src/var/pnum.js                              |     5 [32m+[m
+ node_modules/jquery/src/var/push.js                              |     7 [32m+[m
+ node_modules/jquery/src/var/rcheckableType.js                    |     5 [32m+[m
+ node_modules/jquery/src/var/rcssNum.js                           |     9 [32m+[m
+ node_modules/jquery/src/var/rnothtmlwhite.js                     |     8 [32m+[m
+ node_modules/jquery/src/var/slice.js                             |     7 [32m+[m
+ node_modules/jquery/src/var/support.js                           |     6 [32m+[m
+ node_modules/jquery/src/var/toString.js                          |     7 [32m+[m
+ node_modules/jquery/src/wrap.js                                  |    78 [32m+[m
+ package.json                                                     |     2 [32m+[m
+ yarn.lock                                                        |    10 [32m+[m
+ 196 files changed, 45654 insertions(+), 99 deletions(-)
+
+[33mcommit 4493c7e215aaad89ca052b9de24e9305b5ef1a67[m
+Author: Kenia Guimaraes <keniiarruda@gmail.com>
+Date:   Mon May 9 13:19:22 2022 -0300
+
+    Adiciona pdf.
+
+ Gemfile                                             |  2 [32m++[m
+ Gemfile.lock                                        |  5 [32m+++++[m
+ app/controllers/funcionariobeneficios_controller.rb | 23 [32m+++++++++++++++++[m[31m------[m
+ app/controllers/funcionarios_controller.rb          |  1 [31m-[m
+ app/models/funcionario.rb                           |  5 [32m++++[m[31m-[m
+ app/views/funcionariobeneficios/_form.html.erb      |  2 [31m--[m
+ app/views/funcionariobeneficios/ficha.pdf.erb       | 58 [32m++++++++++++++++++++++++++++++++++++++++++++++++++++++++++[m
+ app/views/funcionariobeneficios/index.html.erb      | 10 [32m++++++[m[31m----[m
+ app/views/funcionarios/index.html.erb               | 62 [32m++++++++++++++++++++++++++++++++[m[31m------------------------------[m
+ app/views/layouts/application.pdf.erb               | 12 [32m++++++++++++[m
+ config/initializers/wicked_pdf.rb                   | 30 [32m++++++++++++++++++++++++++++++[m
+ config/routes.rb                                    |  1 [32m+[m
+ 12 files changed, 167 insertions(+), 44 deletions(-)
+
+[33mcommit 21dc91b8461d33286c611efe779214700e335b06[m
+Author: Kenia Guimaraes <keniiarruda@gmail.com>
+Date:   Mon May 9 10:07:40 2022 -0300
+
+    Adiciona correções no css pro heroku.
+
+ Gemfile.lock | 4 [31m----[m
+ 1 file changed, 4 deletions(-)
+
+[33mcommit 34a20e4482800789dede2a7307069c4f0ff89cdb[m
+Author: Kenia Guimaraes <keniiarruda@gmail.com>
+Date:   Mon May 9 09:54:31 2022 -0300
+
+    Adiciona correções no css pro heroku.
+
+ Gemfile                                             | 2 [32m+[m[31m-[m
+ app/assets/stylesheets/application.css              | 3 [31m---[m
+ app/controllers/funcionariobeneficios_controller.rb | 3 [32m+++[m
+ 3 files changed, 4 insertions(+), 4 deletions(-)
+
+[33mcommit 088d36d0c553e46f23eecd6df7cba0c34baab1e2[m
+Author: Kenia Guimaraes <keniiarruda@gmail.com>
+Date:   Mon May 9 09:10:33 2022 -0300
+
+    Adiciona correções pro heroku.
+
+ app/assets/stylesheets/sb-admin-2.css               |  1 [31m-[m
+ app/controllers/funcionariobeneficios_controller.rb | 10 [32m+++[m[31m-------[m
+ app/controllers/funcionarios_controller.rb          |  5 [32m+++[m[31m--[m
+ app/views/funcionariobeneficios/_form.html.erb      |  4 [32m+[m[31m---[m
+ app/views/funcionarios/index.html.erb               |  6 [32m++++++[m
+ 5 files changed, 13 insertions(+), 13 deletions(-)
+
+[33mcommit 24d9af0834d5b04ffbd514796e6ae0ef29b917e9[m
+Author: Kenia Guimaraes <keniiarruda@gmail.com>
+Date:   Sun May 8 22:34:44 2022 -0300
+
+    Adiciona funcionario.
+
+ app/assets/stylesheets/application.css                         |    2 [32m+[m[31m-[m
+ app/controllers/beneficios_controller.rb                       |    6 [32m+[m[31m-[m
+ app/controllers/clientes_controller.rb                         |    6 [32m+[m[31m-[m
+ app/controllers/funcionariobeneficios_controller.rb            |   75 [32m+++[m
+ app/controllers/funcionarios_controller.rb                     |   77 [32m+++[m
+ app/helpers/funcionariobeneficios_helper.rb                    |    2 [32m+[m
+ app/helpers/funcionarios_helper.rb                             |    2 [32m+[m
+ app/models/beneficio.rb                                        |    1 [32m+[m
+ app/models/cliente.rb                                          |    2 [32m+[m
+ app/models/funcionario.rb                                      |   11 [32m+[m
+ app/models/funcionariobeneficio.rb                             |    4 [32m+[m
+ app/views/beneficios/_form_modal.html.erb                      |    6 [32m+[m[31m-[m
+ app/views/beneficios/index.html.erb                            |    2 [32m+[m[31m-[m
+ app/views/clientes/_form.html.erb                              |    2 [32m+[m[31m-[m
+ app/views/clientes/_form_modal.html.erb                        |    3 [32m+[m[31m-[m
+ app/views/clientes/new.turbo_stream.erb                        |    3 [32m+[m[31m-[m
+ app/views/funcionariobeneficios/_form.html.erb                 |   61 [32m+++[m
+ app/views/funcionariobeneficios/_form_modal.html.erb           |   17 [32m+[m
+ app/views/funcionariobeneficios/_funcionariobeneficio.html.erb |   27 [32m++[m
+ app/views/funcionariobeneficios/edit.turbo_stream.erb          |    4 [32m+[m
+ app/views/funcionariobeneficios/index.html.erb                 |   48 [32m++[m
+ app/views/funcionariobeneficios/new.turbo_stream.erb           |    4 [32m+[m
+ app/views/funcionarios/_form.html.erb                          |   81 [32m++++[m
+ app/views/funcionarios/_form_modal.html.erb                    |   17 [32m+[m
+ app/views/funcionarios/_funcionario.html.erb                   |   27 [32m++[m
+ app/views/funcionarios/edit.turbo_stream.erb                   |    4 [32m+[m
+ app/views/funcionarios/index.html.erb                          |   32 [32m++[m
+ app/views/funcionarios/new.turbo_stream.erb                    |    4 [32m+[m
+ app/views/layouts/application.html.erb                         |    6 [32m+[m[31m-[m
+ app/views/projects/show.html.erb                               |    4 [32m+[m[31m-[m
+ config/routes.rb                                               |    2 [32m+[m
+ db/migrate/20220502021157_create_funcionarios.rb               |   13 [32m+[m
+ db/migrate/20220502061141_add_cliente_id_to_funcionarios.rb    |    5 [32m+[m
+ db/migrate/20220502232723_create_funcionariobeneficios.rb      |   13 [32m+[m
+ db/schema.rb                                                   |   30 [32m+[m[31m-[m
+ db/seeds.rb                                                    |    5 [32m+[m[31m-[m
+ node_modules/.yarn-integrity                                   |    2 [32m+[m
+ node_modules/font-awesome/.npmignore                           |   42 [32m++[m
+ node_modules/font-awesome/HELP-US-OUT.txt                      |    7 [32m+[m
+ node_modules/font-awesome/README.md                            |  106 [32m++++[m
+ node_modules/font-awesome/css/font-awesome.css                 | 2337 [32m+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++[m
+ node_modules/font-awesome/css/font-awesome.css.map             |    7 [32m+[m
+ node_modules/font-awesome/css/font-awesome.min.css             |    4 [32m+[m
+ node_modules/font-awesome/fonts/FontAwesome.otf                |  Bin [31m0[m -> [32m134808[m bytes
+ node_modules/font-awesome/fonts/fontawesome-webfont.eot        |  Bin [31m0[m -> [32m165742[m bytes
+ node_modules/font-awesome/fonts/fontawesome-webfont.svg        | 2671 [32m++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++[m
+ node_modules/font-awesome/fonts/fontawesome-webfont.ttf        |  Bin [31m0[m -> [32m165548[m bytes
+ node_modules/font-awesome/fonts/fontawesome-webfont.woff       |  Bin [31m0[m -> [32m98024[m bytes
+ node_modules/font-awesome/fonts/fontawesome-webfont.woff2      |  Bin [31m0[m -> [32m77160[m bytes
+ node_modules/font-awesome/less/animated.less                   |   34 [32m++[m
+ node_modules/font-awesome/less/bordered-pulled.less            |   25 [32m+[m
+ node_modules/font-awesome/less/core.less                       |   12 [32m+[m
+ node_modules/font-awesome/less/fixed-width.less                |    6 [32m+[m
+ node_modules/font-awesome/less/font-awesome.less               |   18 [32m+[m
+ node_modules/font-awesome/less/icons.less                      |  789 [32m++++++++++++++++++++++++++++++[m
+ node_modules/font-awesome/less/larger.less                     |   13 [32m+[m
+ node_modules/font-awesome/less/list.less                       |   19 [32m+[m
+ node_modules/font-awesome/less/mixins.less                     |   60 [32m+++[m
+ node_modules/font-awesome/less/path.less                       |   15 [32m+[m
+ node_modules/font-awesome/less/rotated-flipped.less            |   20 [32m+[m
+ node_modules/font-awesome/less/screen-reader.less              |    5 [32m+[m
+ node_modules/font-awesome/less/stacked.less                    |   20 [32m+[m
+ node_modules/font-awesome/less/variables.less                  |  800 [32m++++++++++++++++++++++++++++++[m
+ node_modules/font-awesome/package.json                         |   44 [32m++[m
+ node_modules/font-awesome/scss/_animated.scss                  |   34 [32m++[m
+ node_modules/font-awesome/scss/_bordered-pulled.scss           |   25 [32m+[m
+ node_modules/font-awesome/scss/_core.scss                      |   12 [32m+[m
+ node_modules/font-awesome/scss/_fixed-width.scss               |    6 [32m+[m
+ node_modules/font-awesome/scss/_icons.scss                     |  789 [32m++++++++++++++++++++++++++++++[m
+ node_modules/font-awesome/scss/_larger.scss                    |   13 [32m+[m
+ node_modules/font-awesome/scss/_list.scss                      |   19 [32m+[m
+ node_modules/font-awesome/scss/_mixins.scss                    |   60 [32m+++[m
+ node_modules/font-awesome/scss/_path.scss                      |   15 [32m+[m
+ node_modules/font-awesome/scss/_rotated-flipped.scss           |   20 [32m+[m
+ node_modules/font-awesome/scss/_screen-reader.scss             |    5 [32m+[m
+ node_modules/font-awesome/scss/_stacked.scss                   |   20 [32m+[m
+ node_modules/font-awesome/scss/_variables.scss                 |  800 [32m++++++++++++++++++++++++++++++[m
+ node_modules/font-awesome/scss/font-awesome.scss               |   18 [32m+[m
+ package.json                                                   |    1 [32m+[m
+ test/controllers/funcionariobeneficios_controller_test.rb      |   48 [32m++[m
+ test/controllers/funcionarios_controller_test.rb               |   48 [32m++[m
+ test/fixtures/funcionariobeneficios.yml                        |   15 [32m+[m
+ test/fixtures/funcionarios.yml                                 |   15 [32m+[m
+ test/models/funcionario_test.rb                                |    7 [32m+[m
+ test/models/funcionariobeneficio_test.rb                       |    7 [32m+[m
+ test/system/funcionariobeneficios_test.rb                      |   49 [32m++[m
+ test/system/funcionarios_test.rb                               |   49 [32m++[m
+ yarn.lock                                                      |    5 [32m+[m
+ 88 files changed, 9721 insertions(+), 23 deletions(-)
+
+[33mcommit 91fdb4ea14afef009dc2c7d3894b4f36272e46a7[m
+Author: Kenia Guimaraes <keniiarruda@gmail.com>
+Date:   Sun May 1 22:24:45 2022 -0300
+
+    Corrige modulos de beneficio e clente.
+
+ Gemfile                                                                                                    |    29 [32m+[m[31m-[m
+ Gemfile.lock                                                                                               |    21 [32m+[m[31m-[m
+ README.md                                                                                                  |     3 [32m+[m[31m-[m
+ app/assets/builds/.keep                                                                                    |     0
+ app/assets/builds/application.js                                                                           | 10802 [32m++++++[m
+ app/assets/builds/application.js.map                                                                       |     7 [32m+[m
+ app/assets/config/manifest.js                                                                              |     5 [32m+[m[31m-[m
+ app/assets/stylesheets/application.css                                                                     |     3 [32m+[m[31m-[m
+ app/assets/stylesheets/sb-admin-2.css                                                                      |     1 [32m+[m
+ app/controllers/beneficios_controller.rb                                                                   |    35 [32m+[m[31m-[m
+ app/controllers/clientes_controller.rb                                                                     |    34 [32m+[m[31m-[m
+ app/controllers/home_controller.rb                                                                         |     6 [32m+[m[31m-[m
+ app/controllers/projects_controller.rb                                                                     |    58 [32m+[m
+ app/javascript/application.js                                                                              |     6 [32m+[m[31m-[m
+ app/javascript/controllers/index.js                                                                        |    19 [32m+[m[31m-[m
+ app/javascript/controllers/modal_controller.js                                                             |    15 [32m+[m
+ app/javascript/controllers/turbo_controller.js                                                             |    21 [32m+[m
+ app/models/project.rb                                                                                      |     3 [32m+[m
+ app/views/beneficios/_beneficio.html.erb                                                                   |     9 [32m+[m[31m-[m
+ app/views/beneficios/_beneficio.json.jbuilder                                                              |     2 [31m-[m
+ app/views/beneficios/_form.html.erb                                                                        |    24 [32m+[m[31m-[m
+ app/views/beneficios/_form_modal.html.erb                                                                  |    16 [32m+[m
+ app/views/beneficios/edit.html.erb                                                                         |    10 [31m-[m
+ app/views/beneficios/edit.turbo_stream.erb                                                                 |     4 [32m+[m
+ app/views/beneficios/index.html.erb                                                                        |    42 [32m+[m[31m-[m
+ app/views/beneficios/index.json.jbuilder                                                                   |     1 [31m-[m
+ app/views/beneficios/new.html.erb                                                                          |     9 [31m-[m
+ app/views/beneficios/new.turbo_stream.erb                                                                  |     4 [32m+[m
+ app/views/beneficios/show.html.erb                                                                         |    10 [31m-[m
+ app/views/beneficios/show.json.jbuilder                                                                    |     1 [31m-[m
+ app/views/clientes/_cliente.html.erb                                                                       |     9 [32m+[m[31m-[m
+ app/views/clientes/_form.html.erb                                                                          |    24 [32m+[m[31m-[m
+ app/views/clientes/_form_modal.html.erb                                                                    |    18 [32m+[m
+ app/views/clientes/_modal_clientes.html.erb                                                                |    19 [31m-[m
+ app/views/clientes/create.js.erb                                                                           |     4 [31m-[m
+ app/views/clientes/destroy.js.erb                                                                          |     1 [31m-[m
+ app/views/clientes/edit.js.erb                                                                             |     5 [31m-[m
+ app/views/clientes/edit.turbo_stream.erb                                                                   |     4 [32m+[m
+ app/views/clientes/index.html.erb                                                                          |    41 [32m+[m[31m-[m
+ app/views/clientes/new.js.erb                                                                              |     8 [31m-[m
+ app/views/clientes/new.turbo_stream.erb                                                                    |     5 [32m+[m
+ app/views/clientes/update.js.erb                                                                           |     4 [31m-[m
+ app/views/layouts/application.html.erb                                                                     |     1 [32m+[m
+ app/views/projects/_form.html.erb                                                                          |    28 [32m+[m
+ app/views/projects/_form_modal.html.erb                                                                    |    15 [32m+[m
+ app/views/projects/_project.html.erb                                                                       |    13 [32m+[m
+ app/views/projects/edit.html.erb                                                                           |    10 [32m+[m
+ app/views/projects/edit.turbo_stream.erb                                                                   |     4 [32m+[m
+ app/views/projects/index.html.erb                                                                          |     5 [32m+[m
+ app/views/projects/new.turbo_stream.erb                                                                    |     4 [32m+[m
+ app/views/projects/new333.html.erb                                                                         |     9 [32m+[m
+ app/views/projects/show.html.erb                                                                           |     9 [32m+[m
+ config/environments/production.rb                                                                          |     3 [32m+[m[31m-[m
+ config/routes.rb                                                                                           |     3 [32m+[m
+ db/migrate/20220206020936_create_projects.rb                                                               |     8 [32m+[m
+ db/schema.rb                                                                                               |     6 [32m+[m
+ db/seeds.rb                                                                                                |     2 [32m+[m
+ javascript/application.js                                                                                  |     5 [32m+[m
+ javascript/controllers/application.js                                                                      |     9 [32m+[m
+ javascript/controllers/hello_controller.js                                                                 |     7 [32m+[m
+ javascript/controllers/index.js                                                                            |    14 [32m+[m
+ javascript/controllers/modal_controller.js                                                                 |    15 [32m+[m
+ javascript/controllers/turbo_controller.js                                                                 |    21 [32m+[m
+ node_modules/.bin/esbuild                                                                                  |     1 [32m+[m
+ node_modules/.bin/sass                                                                                     |     1 [32m+[m
+ node_modules/.yarn-integrity                                                                               |    68 [32m+[m
+ node_modules/@hotwired/stimulus/LICENSE.md                                                                 |     9 [32m+[m
+ node_modules/@hotwired/stimulus/README.md                                                                  |    65 [32m+[m
+ node_modules/@hotwired/stimulus/dist/stimulus.js                                                           |  1944 [32m++[m
+ node_modules/@hotwired/stimulus/dist/stimulus.umd.js                                                       |  1968 [32m++[m
+ node_modules/@hotwired/stimulus/dist/types/core/action.d.ts                                                |    18 [32m+[m
+ node_modules/@hotwired/stimulus/dist/types/core/action_descriptor.d.ts                                     |     9 [32m+[m
+ node_modules/@hotwired/stimulus/dist/types/core/action_event.d.ts                                          |     5 [32m+[m
+ node_modules/@hotwired/stimulus/dist/types/core/application.d.ts                                           |    29 [32m+[m
+ node_modules/@hotwired/stimulus/dist/types/core/binding.d.ts                                               |    20 [32m+[m
+ node_modules/@hotwired/stimulus/dist/types/core/binding_observer.d.ts                                      |    30 [32m+[m
+ node_modules/@hotwired/stimulus/dist/types/core/blessing.d.ts                                              |     6 [32m+[m
+ node_modules/@hotwired/stimulus/dist/types/core/class_map.d.ts                                             |    11 [32m+[m
+ node_modules/@hotwired/stimulus/dist/types/core/class_properties.d.ts                                      |     2 [32m+[m
+ node_modules/@hotwired/stimulus/dist/types/core/constructor.d.ts                                           |     1 [32m+[m
+ node_modules/@hotwired/stimulus/dist/types/core/context.d.ts                                               |    30 [32m+[m
+ node_modules/@hotwired/stimulus/dist/types/core/controller.d.ts                                            |    30 [32m+[m
+ node_modules/@hotwired/stimulus/dist/types/core/data_map.d.ts                                              |    12 [32m+[m
+ node_modules/@hotwired/stimulus/dist/types/core/definition.d.ts                                            |     6 [32m+[m
+ node_modules/@hotwired/stimulus/dist/types/core/dispatcher.d.ts                                            |    21 [32m+[m
+ node_modules/@hotwired/stimulus/dist/types/core/error_handler.d.ts                                         |     3 [32m+[m
+ node_modules/@hotwired/stimulus/dist/types/core/event_listener.d.ts                                        |    14 [32m+[m
+ node_modules/@hotwired/stimulus/dist/types/core/guide.d.ts                                                 |     7 [32m+[m
+ node_modules/@hotwired/stimulus/dist/types/core/index.d.ts                                                 |     6 [32m+[m
+ node_modules/@hotwired/stimulus/dist/types/core/inheritable_statics.d.ts                                   |     3 [32m+[m
+ node_modules/@hotwired/stimulus/dist/types/core/logger.d.ts                                                |     7 [32m+[m
+ node_modules/@hotwired/stimulus/dist/types/core/module.d.ts                                                |    18 [32m+[m
+ node_modules/@hotwired/stimulus/dist/types/core/router.d.ts                                                |    30 [32m+[m
+ node_modules/@hotwired/stimulus/dist/types/core/schema.d.ts                                                |     7 [32m+[m
+ node_modules/@hotwired/stimulus/dist/types/core/scope.d.ts                                                 |    21 [32m+[m
+ node_modules/@hotwired/stimulus/dist/types/core/scope_observer.d.ts                                        |    25 [32m+[m
+ node_modules/@hotwired/stimulus/dist/types/core/selectors.d.ts                                             |     1 [32m+[m
+ node_modules/@hotwired/stimulus/dist/types/core/string_helpers.d.ts                                        |     4 [32m+[m
+ node_modules/@hotwired/stimulus/dist/types/core/target_observer.d.ts                                       |    24 [32m+[m
+ node_modules/@hotwired/stimulus/dist/types/core/target_properties.d.ts                                     |     2 [32m+[m
+ node_modules/@hotwired/stimulus/dist/types/core/target_set.d.ts                                            |    19 [32m+[m
+ node_modules/@hotwired/stimulus/dist/types/core/value_observer.d.ts                                        |    22 [32m+[m
+ node_modules/@hotwired/stimulus/dist/types/core/value_properties.d.ts                                      |    30 [32m+[m
+ node_modules/@hotwired/stimulus/dist/types/index.d.ts                                                      |     3 [32m+[m
+ node_modules/@hotwired/stimulus/dist/types/multimap/index.d.ts                                             |     3 [32m+[m
+ node_modules/@hotwired/stimulus/dist/types/multimap/indexed_multimap.d.ts                                  |    10 [32m+[m
+ node_modules/@hotwired/stimulus/dist/types/multimap/multimap.d.ts                                          |    14 [32m+[m
+ node_modules/@hotwired/stimulus/dist/types/multimap/set_operations.d.ts                                    |     4 [32m+[m
+ node_modules/@hotwired/stimulus/dist/types/mutation-observers/attribute_observer.d.ts                      |    24 [32m+[m
+ node_modules/@hotwired/stimulus/dist/types/mutation-observers/element_observer.d.ts                        |    32 [32m+[m
+ node_modules/@hotwired/stimulus/dist/types/mutation-observers/index.d.ts                                   |     5 [32m+[m
+ node_modules/@hotwired/stimulus/dist/types/mutation-observers/string_map_observer.d.ts                     |    26 [32m+[m
+ node_modules/@hotwired/stimulus/dist/types/mutation-observers/token_list_observer.d.ts                     |    33 [32m+[m
+ node_modules/@hotwired/stimulus/dist/types/mutation-observers/value_list_observer.d.ts                     |    24 [32m+[m
+ node_modules/@hotwired/stimulus/dist/types/tests/cases/application_test_case.d.ts                          |     9 [32m+[m
+ node_modules/@hotwired/stimulus/dist/types/tests/cases/controller_test_case.d.ts                           |    14 [32m+[m
+ node_modules/@hotwired/stimulus/dist/types/tests/cases/dom_test_case.d.ts                                  |    17 [32m+[m
+ node_modules/@hotwired/stimulus/dist/types/tests/cases/index.d.ts                                          |     6 [32m+[m
+ node_modules/@hotwired/stimulus/dist/types/tests/cases/log_controller_test_case.d.ts                       |    13 [32m+[m
+ node_modules/@hotwired/stimulus/dist/types/tests/cases/observer_test_case.d.ts                             |    14 [32m+[m
+ node_modules/@hotwired/stimulus/dist/types/tests/cases/test_case.d.ts                                      |    16 [32m+[m
+ node_modules/@hotwired/stimulus/dist/types/tests/controllers/class_controller.d.ts                         |    17 [32m+[m
+ node_modules/@hotwired/stimulus/dist/types/tests/controllers/default_value_controller.d.ts                 |    44 [32m+[m
+ node_modules/@hotwired/stimulus/dist/types/tests/controllers/log_controller.d.ts                           |    30 [32m+[m
+ node_modules/@hotwired/stimulus/dist/types/tests/controllers/target_controller.d.ts                        |    36 [32m+[m
+ node_modules/@hotwired/stimulus/dist/types/tests/controllers/value_controller.d.ts                         |    28 [32m+[m
+ node_modules/@hotwired/stimulus/dist/types/tests/fixtures/application_start/helpers.d.ts                   |     1 [32m+[m
+ node_modules/@hotwired/stimulus/dist/types/tests/fixtures/application_start/index.d.ts                     |     1 [32m+[m
+ node_modules/@hotwired/stimulus/dist/types/tests/index.d.ts                                                |     3 [32m+[m
+ node_modules/@hotwired/stimulus/dist/types/tests/modules/core/action_ordering_tests.d.ts                   |    16 [32m+[m
+ node_modules/@hotwired/stimulus/dist/types/tests/modules/core/action_params_tests.d.ts                     |    23 [32m+[m
+ node_modules/@hotwired/stimulus/dist/types/tests/modules/core/action_tests.d.ts                            |    13 [32m+[m
+ node_modules/@hotwired/stimulus/dist/types/tests/modules/core/action_timing_tests.d.ts                     |    16 [32m+[m
+ node_modules/@hotwired/stimulus/dist/types/tests/modules/core/application_start_tests.d.ts                 |    10 [32m+[m
+ node_modules/@hotwired/stimulus/dist/types/tests/modules/core/application_tests.d.ts                       |    10 [32m+[m
+ node_modules/@hotwired/stimulus/dist/types/tests/modules/core/class_tests.d.ts                             |    11 [32m+[m
+ node_modules/@hotwired/stimulus/dist/types/tests/modules/core/data_tests.d.ts                              |     9 [32m+[m
+ node_modules/@hotwired/stimulus/dist/types/tests/modules/core/default_value_tests.d.ts                     |    26 [32m+[m
+ node_modules/@hotwired/stimulus/dist/types/tests/modules/core/error_handler_tests.d.ts                     |    12 [32m+[m
+ node_modules/@hotwired/stimulus/dist/types/tests/modules/core/es6_tests.d.ts                               |     9 [32m+[m
+ node_modules/@hotwired/stimulus/dist/types/tests/modules/core/event_options_tests.d.ts                     |    18 [32m+[m
+ node_modules/@hotwired/stimulus/dist/types/tests/modules/core/legacy_target_tests.d.ts                     |    18 [32m+[m
+ node_modules/@hotwired/stimulus/dist/types/tests/modules/core/lifecycle_tests.d.ts                         |    11 [32m+[m
+ node_modules/@hotwired/stimulus/dist/types/tests/modules/core/loading_tests.d.ts                           |     8 [32m+[m
+ node_modules/@hotwired/stimulus/dist/types/tests/modules/core/target_tests.d.ts                            |    23 [32m+[m
+ node_modules/@hotwired/stimulus/dist/types/tests/modules/core/value_tests.d.ts                             |    25 [32m+[m
+ node_modules/@hotwired/stimulus/dist/types/tests/modules/mutation-observers/attribute_observer_tests.d.ts  |    20 [32m+[m
+ node_modules/@hotwired/stimulus/dist/types/tests/modules/mutation-observers/token_list_observer_tests.d.ts |    17 [32m+[m
+ node_modules/@hotwired/stimulus/dist/types/tests/modules/mutation-observers/value_list_observer_tests.d.ts |    27 [32m+[m
+ node_modules/@hotwired/stimulus/package.json                                                               |    64 [32m+[m
+ node_modules/@hotwired/turbo-rails/README.md                                                               |   112 [32m+[m
+ node_modules/@hotwired/turbo-rails/app/assets/javascripts/turbo.js                                         |  4024 [32m+++[m
+ node_modules/@hotwired/turbo-rails/app/javascript/turbo/cable.js                                           |    19 [32m+[m
+ node_modules/@hotwired/turbo-rails/app/javascript/turbo/cable_stream_source_element.js                     |    27 [32m+[m
+ node_modules/@hotwired/turbo-rails/app/javascript/turbo/index.js                                           |     7 [32m+[m
+ node_modules/@hotwired/turbo-rails/package.json                                                            |    47 [32m+[m
+ node_modules/@hotwired/turbo/CHANGELOG.md                                                                  |     3 [32m+[m
+ node_modules/@hotwired/turbo/README.md                                                                     |    14 [32m+[m
+ node_modules/@hotwired/turbo/dist/turbo.es2017-esm.js                                                      |  3340 [32m++[m
+ node_modules/@hotwired/turbo/dist/turbo.es2017-umd.js                                                      |  3362 [32m++[m
+ node_modules/@hotwired/turbo/dist/types/core/bardo.d.ts                                                    |    13 [32m+[m
+ node_modules/@hotwired/turbo/dist/types/core/drive/error_renderer.d.ts                                     |     9 [32m+[m
+ node_modules/@hotwired/turbo/dist/types/core/drive/form_submission.d.ts                                    |    61 [32m+[m
+ node_modules/@hotwired/turbo/dist/types/core/drive/head_snapshot.d.ts                                      |    21 [32m+[m
+ node_modules/@hotwired/turbo/dist/types/core/drive/history.d.ts                                            |    35 [32m+[m
+ node_modules/@hotwired/turbo/dist/types/core/drive/navigator.d.ts                                          |    35 [32m+[m
+ node_modules/@hotwired/turbo/dist/types/core/drive/page_renderer.d.ts                                      |    26 [32m+[m
+ node_modules/@hotwired/turbo/dist/types/core/drive/page_snapshot.d.ts                                      |    17 [32m+[m
+ node_modules/@hotwired/turbo/dist/types/core/drive/page_view.d.ts                                          |    21 [32m+[m
+ node_modules/@hotwired/turbo/dist/types/core/drive/progress_bar.d.ts                                       |    24 [32m+[m
+ node_modules/@hotwired/turbo/dist/types/core/drive/snapshot_cache.d.ts                                     |    17 [32m+[m
+ node_modules/@hotwired/turbo/dist/types/core/drive/visit.d.ts                                              |   114 [32m+[m
+ node_modules/@hotwired/turbo/dist/types/core/frames/form_interceptor.d.ts                                  |    12 [32m+[m
+ node_modules/@hotwired/turbo/dist/types/core/frames/frame_controller.d.ts                                  |    70 [32m+[m
+ node_modules/@hotwired/turbo/dist/types/core/frames/frame_redirector.d.ts                                  |    17 [32m+[m
+ node_modules/@hotwired/turbo/dist/types/core/frames/frame_renderer.d.ts                                    |    10 [32m+[m
+ node_modules/@hotwired/turbo/dist/types/core/frames/frame_view.d.ts                                        |     7 [32m+[m
+ node_modules/@hotwired/turbo/dist/types/core/frames/link_interceptor.d.ts                                  |    16 [32m+[m
+ node_modules/@hotwired/turbo/dist/types/core/index.d.ts                                                    |    20 [32m+[m
+ node_modules/@hotwired/turbo/dist/types/core/native/adapter.d.ts                                           |    16 [32m+[m
+ node_modules/@hotwired/turbo/dist/types/core/native/browser_adapter.d.ts                                   |    31 [32m+[m
+ node_modules/@hotwired/turbo/dist/types/core/renderer.d.ts                                                 |    22 [32m+[m
+ node_modules/@hotwired/turbo/dist/types/core/session.d.ts                                                  |    87 [32m+[m
+ node_modules/@hotwired/turbo/dist/types/core/snapshot.d.ts                                                 |    13 [32m+[m
+ node_modules/@hotwired/turbo/dist/types/core/streams/stream_actions.d.ts                                   |     4 [32m+[m
+ node_modules/@hotwired/turbo/dist/types/core/streams/stream_message.d.ts                                   |    10 [32m+[m
+ node_modules/@hotwired/turbo/dist/types/core/types.d.ts                                                    |    10 [32m+[m
+ node_modules/@hotwired/turbo/dist/types/core/url.d.ts                                                      |    11 [32m+[m
+ node_modules/@hotwired/turbo/dist/types/core/view.d.ts                                                     |    33 [32m+[m
+ node_modules/@hotwired/turbo/dist/types/elements/frame_element.d.ts                                        |    39 [32m+[m
+ node_modules/@hotwired/turbo/dist/types/elements/index.d.ts                                                |     2 [32m+[m
+ node_modules/@hotwired/turbo/dist/types/elements/stream_element.d.ts                                       |    20 [32m+[m
+ node_modules/@hotwired/turbo/dist/types/h
