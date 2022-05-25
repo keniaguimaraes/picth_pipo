@@ -1,7 +1,7 @@
 <%= form_with(model: funcionariobeneficio,html: { data: { controller: "masks" } }) do |form| %>
    <% if @funcionariobeneficio.errors.any? %>
       <div id="error_explanation">
-        <h6><%= pluralize(@funcionariobeneficio.errors.count, "error") %></h6>
+        <h6><%= pluralize(@funcionariobeneficio.errors.count, "Erro(s)") %></h6>
         <ul>
           <% @funcionariobeneficio.errors.each do |error| %>
             <li><%= error.full_message %></li>

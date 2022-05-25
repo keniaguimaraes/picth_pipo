@@ -8,6 +8,6 @@
 
  Cliente.create([{ nome: "Acme Co" }, { nome: "Dental Sorriso" }])
  Beneficio.create([{ nome: "Plano de Saúde NorteEuropa" }, { nome: "Plano de Saúde Pampulha Intermédica" },{nome:"Plano Dental Sorriso"},{ nome: "Plano de Saúde Mental Mente Sã, Corpo São" }])
- Funcionario.create(nome:"Maria Silva",cpf:"12345678903",endereco:"Ruda do João ",email:"mariasilva@email.com",data_admissao:"20/01/2021",cliente_id:1)
+ Funcionario.create(nome:"Maria Silva",cpf:"23775652043",endereco:"Ruda do João ",email:"mariasilva@email.com",data_admissao:"20/01/2021",cliente_id:1)
  Funcionariobeneficio.create({funcionario_id:1, beneficio_id:2, peso:59, altura:1.70, horas_meditadas:"10/01/2020 01:30"})
  Clientebeneficio.create([{cliente_id:1, beneficio_id:1},{cliente_id:1, beneficio_id:3},{cliente_id:2, beneficio_id:2},{cliente_id:2, beneficio_id:3},{cliente_id:2, beneficio_id:4}])
