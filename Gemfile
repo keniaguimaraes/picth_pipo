@@ -66,6 +66,7 @@ end
 group :production do 
    gem "pg"
    gem "wkhtmltopdf-heroku"
+   gem 'rails_12factor'
 end
 group :test do
   gem "capybara"
