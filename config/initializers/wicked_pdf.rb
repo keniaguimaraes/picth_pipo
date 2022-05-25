@@ -13,7 +13,9 @@
 
   # Path to the wkhtmltopdf executable: This usually isn't needed if using
   # one of the wkhtmltopdf-binary family of gems.
-  exe_path: '/home/keniaguimaraes/.rvm/gems/ruby-3.0.0/bin/wkhtmltopdf'
+  exe_path: '/usr/share/.rvm/gems/ruby-3.0.0/bin/wkhtmltopdf'
+  #'/home/keniaguimaraes/.rvm/gems/ruby-3.0.0/bin/wkhtmltopdf'
+  #/usr/share/rvm/gems/ruby-3.0.0/bin/wkhtmltopdf
   #  exe_path: path
    
   #   or
